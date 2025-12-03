@@ -1,18 +1,3 @@
-cmake_minimum_required(VERSION 3.30)
-
-include(FetchContent)
-FetchContent_Declare(
-    godot-cpp
-    GIT_REPOSITORY  https://github.com/godotengine/godot-cpp.git
-    GIT_TAG         4.4
-    GIT_SHALLOW     TRUE
-)
-FetchContent_MakeAvailable(godot-cpp)
-
-set(PROJECT_NAME World)
-
-project(${PROJECT_NAME} LANGUAGES C CXX)
-
 set(CMAKE_C_STANDARD 23)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -21,11 +6,14 @@ set(CMAKE_INTERPROCEDURAL_OPTIMIZATION_RELEASE ON)
 set(CMAKE_COLOR_DIAGNOSTICS ON)
 set(CMAKE_COLOR_MAKEFILE ON)
 
-set(BUILD_PATH ${CMAKE_SOURCE_DIR}/../godot/bin)
+set(BUILD_PATH ${CMAKE_SOURCE_DIR}/godot/addons/gd_audio_analyzer)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${BUILD_PATH}")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${BUILD_PATH}")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${BUILD_PATH}")
+
+find_package(FFTW3 CONFIG REQUIRED)
+find_package(portaudio CONFIG REQUIRED)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c*")
 file(GLOB_RECURSE HEADERS CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h*")
@@ -33,8 +21,27 @@ file(GLOB_RECURSE HEADERS CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h
 add_library(${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS})
 
 target_link_libraries(${PROJECT_NAME} PRIVATE godot-cpp)
+target_link_libraries(${PROJECT_NAME} PRIVATE FFTW3::fftw3)
+target_link_libraries(${PROJECT_NAME} PRIVATE portaudio)
 target_include_directories(${PROJECT_NAME}
     PUBLIC
     
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
+
+# Install library, extension file, and support files in ${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}
+message( STATUS "Install directory: ${INSTALL_DIR}")
+
+# install( TARGETS ${PROJECT_NAME}
+#     LIBRARY
+#         DESTINATION ${INSTALL_DIR}/
+#     RUNTIME
+#         DESTINATION ${INSTALL_DIR}/
+# )
+
+# install(
+#     DIRECTORY ${CMAKE_BINARY_DIR}/code/Debug
+#     DESTINATION ${INSTALL_DIR}
+# )
+
+file(COPY ${CMAKE_BINARY_DIR}/code/Debug DESTINATION ${INSTALL_DIR})

@@ -8,6 +8,7 @@
 
 #include "example.h"
 #include "test.h"
+#include "gd_audio_analyzer.h"
 
 using namespace godot;
 
@@ -16,6 +17,7 @@ void initialize_library_modules(ModuleInitializationLevel p_level) {
     return;
   }
 
+  GDREGISTER_CLASS(GdAudioAnalyzer);
   GDREGISTER_CLASS(ExampleRef);
   GDREGISTER_CLASS(ExampleMin);
   GDREGISTER_CLASS(Example);

@@ -1,0 +1,13 @@
+[configuration]
+
+entry_symbol = "library_init"
+compatibility_minimum = "4.2"
+reloadable = true
+
+[libraries]
+
+windows.debug.x86_64 = "Debug/gd_audio_analyzer.dll"
+windows.release.x86_64 = "Release/gd_audio_analyzer.dll"
+
+linux.debug.x86_64 = "gd_audio_analyzer.so"
+linux.release.x86_64 = "gd_audio_analyzer.so"
