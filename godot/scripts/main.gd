@@ -1,4 +1,4 @@
-extends "res://test_base.gd"
+extends "res://scripts/test_base.gd"
 
 var custom_signal_emitted = null
 

@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://c5vbgyko843v"]
+
+[ext_resource type="Script" uid="uid://ppjyxygrt0pa" path="res://scripts/settings.gd" id="1_rbmmp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbmmp"]
+
+[node name="Settings" type="Control" unique_id=841244356]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rbmmp")
+
+[node name="Panel" type="Panel" parent="." unique_id=1674920805]
+self_modulate = Color(0, 0, 0, 0.93333334)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -351.5
+offset_top = -216.0
+offset_right = 351.5
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rbmmp")
+
+[node name="Label" type="Label" parent="Panel" unique_id=1915543843]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 92.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 61
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="Panel" unique_id=538574623]
+layout_mode = 0
+offset_left = 559.5
+offset_top = 356.0
+offset_right = 671.5
+offset_bottom = 404.0
+text = "Back
+"
+
+[node name="InputOption" type="OptionButton" parent="Panel" unique_id=362161377]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.39800003
+anchor_right = 0.5
+anchor_bottom = 0.39800003
+offset_left = -128.0
+offset_top = -15.93602
+offset_right = 128.0
+offset_bottom = 16.06398
+
+[node name="OutputOption" type="OptionButton" parent="Panel" unique_id=1214434695]
+layout_mode = 0
+offset_left = 223.5
+offset_top = 260.0
+offset_right = 479.5
+offset_bottom = 292.0
+
+[node name="Input" type="Label" parent="Panel" unique_id=850279033]
+layout_mode = 0
+offset_left = 303.5
+offset_top = 108.0
+offset_right = 407.5
+offset_bottom = 132.0
+text = "Input Device"
+
+[node name="Output" type="Label" parent="Panel" unique_id=690874485]
+layout_mode = 0
+offset_left = 295.5
+offset_top = 216.0
+offset_right = 406.5
+offset_bottom = 240.0
+text = "Output Device"
+
+[connection signal="button_down" from="Panel/Back" to="." method="_on_back_button_down"]
+[connection signal="item_selected" from="Panel/InputOption" to="." method="_on_input_option_item_selected"]

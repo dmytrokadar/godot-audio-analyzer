@@ -20,7 +20,7 @@ class AudioAnalyzer {
 
 private:
 	PaError err;
-	PaStream* stream;
+	PaStream* stream = nullptr;
 	PaStreamParameters inputParameters;
 	//double freq = -1;
 

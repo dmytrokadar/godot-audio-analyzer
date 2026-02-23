@@ -8,12 +8,20 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="GDExtension Test Project"
 run/main_scene="uid://dmx2xuigcpvt4"
-config/features=PackedStringArray("4.5")
+config/features=PackedStringArray("4.6")
 config/icon="res://icon.png"
+
+[autoload]
+
+AudioAnalyzer="*res://scenes/gd_audio_analyzer.tscn"
 
 [native_extensions]
 

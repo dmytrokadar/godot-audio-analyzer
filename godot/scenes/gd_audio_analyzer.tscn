@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://doq5j8tk1id1g"]
+
+[ext_resource type="Script" uid="uid://fy4uccnyd3da" path="res://scripts/gd_audio_analyzer.gd" id="1_b08fj"]
+
+[node name="GdAudioAnalyzer" type="GdAudioAnalyzer" unique_id=59642984]
+script = ExtResource("1_b08fj")
