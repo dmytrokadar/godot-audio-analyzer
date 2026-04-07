@@ -6,6 +6,7 @@ extends Control
 @onready var higher: Label = $Higher
 @onready var lower: Label = $Lower
 @onready var correct: Label = $Correct
+@export var HIGHEST_GUITAR_PITCH = 1400.0
 
 @export var diviation: float = 5.0
 
@@ -14,6 +15,7 @@ var playback # Will hold the AudioStreamGeneratorPlayback.
 @onready var sample_hz = $AudioStreamPlayer.stream.mix_rate
 var pulse_hz = 120.0 # The frequency of the sound wave. 440.0
 var phase = 0.0
+var round_ended = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -23,23 +25,26 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var freq = gd_audio_analyzer.get_frequency()
+	var freq
+	freq = gd_audio_analyzer.get_frequency()
+	if not round_ended and freq <= HIGHEST_GUITAR_PITCH:
+		hz.text = str(freq)
 	
-	hz.text = str(freq)
-	if(freq <= pulse_hz + diviation && freq >= pulse_hz - diviation):
-		higher.visible = false
-		lower.visible = false
-		correct.visible = true
-		
-		gd_audio_analyzer.stop_analyzing()
-	elif freq > pulse_hz + 4:
-		higher.visible = true
-		lower.visible = false
-		correct.visible = false
-	else:
-		higher.visible = false
-		lower.visible = true
-		correct.visible = false
+		if(freq <= pulse_hz + diviation && freq >= pulse_hz - diviation):
+			higher.visible = false
+			lower.visible = false
+			correct.visible = true
+			
+			round_ended = true
+			#gd_audio_analyzer.stop_analyzing()
+		elif freq > pulse_hz + 4:
+			higher.visible = true
+			lower.visible = false
+			correct.visible = false
+		else:
+			higher.visible = false
+			lower.visible = true
+			correct.visible = false
 
 
 func fill_buffer():
@@ -59,3 +64,8 @@ func _on_play_sound_button_down() -> void:
 	$AudioStreamPlayer.play()
 	playback = $AudioStreamPlayer.get_stream_playback()
 	fill_buffer()
+
+
+func _on_reset_button_down() -> void:
+	pulse_hz = randf_range(50.0, 200.0)
+	round_ended = false

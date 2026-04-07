@@ -16,6 +16,10 @@
 #define HIGHEST_FREQUENCY 20000
 #define HIGHEST_GUITAR_PITCH 1400
 
+#ifndef PI
+#define PI 3.14159265358979323846
+#endif
+
 class AudioAnalyzer {
 
 private:

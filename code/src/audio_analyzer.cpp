@@ -24,7 +24,9 @@ int AudioAnalyzer::analyzeFreqCallback(const void* inputBuffer, void* outputBuff
 
 	for (unsigned long i = 0; i < framesPerBuffer; i++)
 	{
-		data->in[i] = (double)in[i];
+		// applying Hanning window
+		double w = 0.5 * (1.0 - cos(2.0 * PI * i / (framesPerBuffer - 1)));
+		data->in[i] = (double)in[i] * w;
 	}
 
 	fftw_execute(data->plan);
@@ -46,7 +48,8 @@ int AudioAnalyzer::analyzeFreqCallback(const void* inputBuffer, void* outputBuff
 	double peakValue = 0.0;
 	double increment = (SAMPLE_RATE / FRAMES_PER_BUFFER);
 
-	double max_reasonable_pitch = HIGHEST_GUITAR_PITCH / increment;
+	// double max_reasonable_pitch = HIGHEST_GUITAR_PITCH / increment;
+	double max_reasonable_pitch = FRAMES_PER_BUFFER / 2 + 1;
 
 	for (int i = 0; i < max_reasonable_pitch; i++) {
 		if (abs(data->out[i]) > peakValue) {
@@ -61,7 +64,7 @@ int AudioAnalyzer::analyzeFreqCallback(const void* inputBuffer, void* outputBuff
 
 	fflush(stdout);*/
 
-	data->freq = fundamentalFreq;
+	data->freq = fundamentalFreq * 2;
 
 	return 0;
 }
