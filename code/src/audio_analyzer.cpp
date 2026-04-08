@@ -29,42 +29,75 @@ int AudioAnalyzer::analyzeFreqCallback(const void* inputBuffer, void* outputBuff
 		data->in[i] = (double)in[i] * w;
 	}
 
-	fftw_execute(data->plan);
+	// using fft
+	if (false) {
+		fftw_execute(data->plan);
 
-	float volume = 0;
+		float volume = 0;
 
-	for (unsigned long i = 0; i < framesPerBuffer; i++)
-	{
-		volume = std::max(abs(in[i]), volume);
-	}
-
-	// if (volume < 0.00001) {`
-	// 	printf(" F: no %f", volume);
-	// 	fflush(stdout);
-	// 	return 0;
-	// }
-
-	int peak = -1;
-	double peakValue = 0.0;
-	double increment = (SAMPLE_RATE / FRAMES_PER_BUFFER);
-
-	// double max_reasonable_pitch = HIGHEST_GUITAR_PITCH / increment;
-	double max_reasonable_pitch = FRAMES_PER_BUFFER / 2 + 1;
-
-	for (int i = 0; i < max_reasonable_pitch; i++) {
-		if (abs(data->out[i]) > peakValue) {
-			peakValue = abs(data->out[i]);
-			peak = i;
+		for (unsigned long i = 0; i < framesPerBuffer; i++)
+		{
+			volume = std::max(abs(in[i]), volume);
 		}
+
+		// if (volume < 0.00001) {`
+		// 	printf(" F: no %f", volume);
+		// 	fflush(stdout);
+		// 	return 0;
+		// }
+
+		int peak = -1;
+		double peakValue = 0.0;
+		double increment = (SAMPLE_RATE / FRAMES_PER_BUFFER);
+
+		// double max_reasonable_pitch = HIGHEST_GUITAR_PITCH / increment;
+		double max_reasonable_pitch = FRAMES_PER_BUFFER / 2 + 1;
+
+		for (int i = 0; i < max_reasonable_pitch; i++) {
+			if (abs(data->out[i]) > peakValue) {
+				peakValue = abs(data->out[i]);
+				peak = i;
+			}
+		}
+
+		double fundamentalFreq = peak * (SAMPLE_RATE / FRAMES_PER_BUFFER);
+
+		/*printf(" F: %f %d", fundamentalFreq, peak);
+
+		fflush(stdout);*/
+
+		data->freq = fundamentalFreq * 2;
+	} else {
+		// using autocorrelation
+		std::vector<double> autocorr;
+
+		for (unsigned long lag = 0; lag < framesPerBuffer; lag++) {
+			double autocorrSum = 0;
+
+			for (unsigned long i = 0; i < framesPerBuffer - lag; i++)
+				autocorrSum += data->in[i] * data->in[i + lag];
+
+			autocorr.push_back(autocorrSum);
+		}
+
+		//int minLag = std::max(static_cast<int>(SAMPLE_RATE / HIGHEST_FREQUENCY), 1);
+		int minLag = std::max(static_cast<int>(SAMPLE_RATE / HIGHEST_FREQUENCY), 1);
+		//int maxLag = std::min(static_cast<int>(SAMPLE_RATE / LOWEST_FREQUENCY), static_cast<int>(autocorr.size() - 1));
+		int maxLag = autocorr.size() - 1;
+
+		int peakLag = minLag;
+		double peakLagVal = autocorr[minLag];
+
+		auto peakLagIter = std::max_element(autocorr.begin() + minLag, autocorr.begin() + maxLag);
+		int peakLagTest = std::distance(autocorr.begin(), peakLagIter);
+		/*if (peakLag != peakLagTest) {
+			std::cout << "Error in peak lag calculation!" << peakLag << " " << peakLagTest << std::endl;
+		}*/
+
+		data->freq = SAMPLE_RATE / peakLagTest * 2;
+
+		std::cout << data->freq << std::endl;
 	}
-
-	double fundamentalFreq = peak * (SAMPLE_RATE / FRAMES_PER_BUFFER);
-
-	/*printf(" F: %f %d", fundamentalFreq, peak);
-
-	fflush(stdout);*/
-
-	data->freq = fundamentalFreq * 2;
 
 	return 0;
 }

@@ -27,6 +27,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var freq
 	freq = gd_audio_analyzer.get_frequency()
+	
 	if not round_ended and freq <= HIGHEST_GUITAR_PITCH:
 		hz.text = str(freq)
 	
@@ -61,6 +62,7 @@ func _on_settings_button_down() -> void:
 
 
 func _on_play_sound_button_down() -> void:
+	print(pulse_hz)
 	$AudioStreamPlayer.play()
 	playback = $AudioStreamPlayer.get_stream_playback()
 	fill_buffer()

@@ -10,10 +10,10 @@
 #include <godot_cpp/classes/node.hpp>
 
 #define SAMPLE_RATE 44100.0
-#define FRAMES_PER_BUFFER 8192
+#define FRAMES_PER_BUFFER 8192 // 4096
 
 #define LOWEST_FREQUENCY 20
-#define HIGHEST_FREQUENCY 20000
+#define HIGHEST_FREQUENCY 2700
 #define HIGHEST_GUITAR_PITCH 1400
 
 #ifndef PI
