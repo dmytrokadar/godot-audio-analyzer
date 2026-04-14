@@ -1,16 +1,42 @@
 {
 	"configurations": [
-	{
-		"name": "(Windows) Launch",
-		"type": "cppvsdbg",
-		"request": "launch",
-		"program": "D:/SteamLibrary/steamapps/common/Godot Engine/godot.windows.opt.tools.64.exe",
-		"args": ["${workspaceFolder}/godot/project.godot"],
-		"stopAtEntry": false,
-		"cwd": "${workspaceFolder}",
-		"environment": [],
-		"console": "externalTerminal"
-	}
+		{
+			"name": "(macOS) Launch Godot",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "/Users/dima/Applications/Godot.app/Contents/MacOS/Godot",
+			"args": ["--editor", "--path", "${workspaceFolder}/godot"],
+			"stopAtEntry": false,
+			"cwd": "${workspaceFolder}",
+			"environment": [],
+			"targetArchitecture": "arm64",
+			"MIMode": "lldb",
+			"externalConsole": false
+		},
+		{
+			"name": "(macOS) Run Project",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "/Users/dima/Applications/Godot.app/Contents/MacOS/Godot",
+			"args": ["--path", "${workspaceFolder}/godot"],
+			"stopAtEntry": false,
+			"cwd": "${workspaceFolder}",
+			"environment": [],
+			"targetArchitecture": "arm64",
+			"MIMode": "lldb",
+			"externalConsole": false
+		},
+		{
+			"name": "(Windows) Launch Godot",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "D:/SteamLibrary/steamapps/common/Godot Engine/godot.windows.opt.tools.64.exe",
+			"args": ["${workspaceFolder}/godot/project.godot"],
+			"stopAtEntry": false,
+			"cwd": "${workspaceFolder}",
+			"environment": [],
+			"MIMode": "gdb",
+			"externalConsole": true
+		}
 	]
-	
 }

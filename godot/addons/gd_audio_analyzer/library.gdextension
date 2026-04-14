@@ -11,3 +11,6 @@ windows.release.x86_64 = "Release/gd_audio_analyzer.dll"
 
 linux.debug.x86_64 = "gd_audio_analyzer.so"
 linux.release.x86_64 = "gd_audio_analyzer.so"
+
+macos.debug = "libgd_audio_analyzer.dylib"
+macos.release = "libgd_audio_analyzer.dylib"

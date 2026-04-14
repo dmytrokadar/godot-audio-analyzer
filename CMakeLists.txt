@@ -1,5 +1,12 @@
 cmake_minimum_required(VERSION 3.30)
 
+if(NOT DEFINED CMAKE_TOOLCHAIN_FILE)
+    set(LOCAL_VCPKG_TOOLCHAIN "${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake")
+    if(EXISTS "${LOCAL_VCPKG_TOOLCHAIN}")
+        set(CMAKE_TOOLCHAIN_FILE "${LOCAL_VCPKG_TOOLCHAIN}" CACHE STRING "Vcpkg toolchain file")
+    endif()
+endif()
+
 include(FetchContent)
 FetchContent_Declare(
     godot-cpp
@@ -12,8 +19,6 @@ FetchContent_MakeAvailable(godot-cpp)
 set(PROJECT_NAME gd_audio_analyzer)
 
 project(${PROJECT_NAME} LANGUAGES C CXX)
-
-include(${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake)
 
 set( CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/godot/addons/${PROJECT_NAME}")
 
