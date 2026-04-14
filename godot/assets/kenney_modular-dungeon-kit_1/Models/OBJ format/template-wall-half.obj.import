@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c16t6gvlwp16f"
+path="res://.godot/imported/template-wall-half.obj-ee194c34bd95cf4d494c749588c749ed.mesh"
+
+[deps]
+
+files=["res://.godot/imported/template-wall-half.obj-ee194c34bd95cf4d494c749588c749ed.mesh"]
+
+source_file="res://assets/kenney_modular-dungeon-kit_1/Models/OBJ format/template-wall-half.obj"
+dest_files=["res://.godot/imported/template-wall-half.obj-ee194c34bd95cf4d494c749588c749ed.mesh", "res://.godot/imported/template-wall-half.obj-ee194c34bd95cf4d494c749588c749ed.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
