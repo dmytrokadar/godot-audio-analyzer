@@ -27,6 +27,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var freq
 	freq = gd_audio_analyzer.get_frequency()
+	#print(freq)
 	
 	if not round_ended and freq <= HIGHEST_GUITAR_PITCH:
 		hz.text = str(freq)

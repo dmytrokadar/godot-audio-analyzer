@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dlugmgwct71q"]
 
-[ext_resource type="Script" uid="uid://c7ibrwdffhiah" path="res://scripts/guess_the_sound.gd" id="1_lihaw"]
+[ext_resource type="Script" uid="uid://bnon8msiegrx" path="res://scripts/guess_the_sound.gd" id="1_lihaw"]
 [ext_resource type="PackedScene" uid="uid://c5vbgyko843v" path="res://scenes/Settings.tscn" id="3_el41s"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_lihaw"]

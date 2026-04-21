@@ -94,7 +94,7 @@ int AudioAnalyzer::analyzeFreqCallback(const void* inputBuffer, void* outputBuff
 			std::cout << "Error in peak lag calculation!" << peakLag << " " << peakLagTest << std::endl;
 		}*/
 
-		data->freq = SAMPLE_RATE / peakLagTest * 2;
+		data->freq = SAMPLE_RATE / peakLagTest;
 
 		std::cout << data->freq << std::endl;
 	}

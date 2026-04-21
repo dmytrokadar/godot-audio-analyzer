@@ -7,7 +7,7 @@ data = PackedVector3Array(2, 0, 2, -2, 0, -2, 2, 0, -2, -2, 0, -2, 2, 0, 2, -2, 
 
 [node name="corridor-end" unique_id=1930790722 instance=ExtResource("1_mgiqo")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1418255574]
+[node name="StaticBody3D" type="StaticBody3D" parent="corridor-end" parent_id_path=PackedInt32Array(1370518555) index="0" unique_id=1418255574]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=430885731]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="corridor-end/StaticBody3D" index="0" unique_id=430885731]
 shape = SubResource("ConcavePolygonShape3D_kqtw4")
