@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://bw453csngu8xr"]
+
+[ext_resource type="Script" uid="uid://ct8vojwk8erky" path="res://scripts/fight_scene.gd" id="1_nff5x"]
+[ext_resource type="PackedScene" uid="uid://jamketrrvv5f" path="res://assets/kenney_modular-dungeon-kit_1/Models/GLB format/corridor-junction.glb" id="1_p8b18"]
+[ext_resource type="Environment" uid="uid://btunwl7rs4hth" path="res://isometric_environment.tres" id="2_keksv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8b18"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="FightScene" type="Node3D" unique_id=2001993545]
+script = ExtResource("1_nff5x")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1751626327]
+transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659258, 0, 1.7, 0)
+
+[node name="Decorations" type="Node3D" parent="." unique_id=1659938229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5721507)
+
+[node name="corridor-junction2" parent="Decorations" unique_id=1424043526 instance=ExtResource("1_p8b18")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9133184)
+
+[node name="corridor-junction4" parent="Decorations" unique_id=1065080105 instance=ExtResource("1_p8b18")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4, 0, -1.9133184)
+
+[node name="corridor-junction3" parent="Decorations" unique_id=1100633412 instance=ExtResource("1_p8b18")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4.0013094, -0.0027074814, -1.9118998)
+
+[node name="Enemy" type="Node3D" parent="." unique_id=555665698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Enemy" unique_id=104117987]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+material = SubResource("StandardMaterial3D_p8b18")
+
+[node name="UI" type="Control" parent="." unique_id=1972770598]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 441.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="ColorRect" type="ColorRect" parent="UI" unique_id=1748193444]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -103.5
+offset_right = 576.0
+offset_bottom = 103.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.45882353, 0.45882353, 0.45882353, 0.5568628)
+
+[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=1007129057]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -79.0
+offset_right = 517.0
+offset_bottom = 79.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer" unique_id=1746017481]
+layout_mode = 2
+
+[node name="Attack1" type="Button" parent="UI/MarginContainer/VBoxContainer" unique_id=1679589492]
+custom_minimum_size = Vector2(517, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Attack 1"
+
+[node name="Attack2" type="Button" parent="UI/MarginContainer/VBoxContainer" unique_id=83935869]
+custom_minimum_size = Vector2(517, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Attack 2"
+
+[node name="Attack3" type="Button" parent="UI/MarginContainer/VBoxContainer" unique_id=177356362]
+custom_minimum_size = Vector2(517, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Attack 3"
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI" unique_id=513323908]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -517.0
+offset_top = -103.5
+offset_bottom = 103.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer2" unique_id=206410625]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="UI/MarginContainer2/VBoxContainer" unique_id=194879669]
+custom_minimum_size = Vector2(517, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Inventory"
+
+[node name="Button2" type="Button" parent="UI/MarginContainer2/VBoxContainer" unique_id=1346036252]
+custom_minimum_size = Vector2(517, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Run"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=114984298]
+environment = ExtResource("2_keksv")
+
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/Attack1" to="." method="_on_attack_1_pressed"]

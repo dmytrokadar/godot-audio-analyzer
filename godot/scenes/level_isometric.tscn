@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dcnhs8pwwtunn"]
+
+[ext_resource type="PackedScene" uid="uid://wqsqmojdjkt7" path="res://assets/kenney_modular-dungeon-kit_1/Models/FBX format/corridor-end.fbx" id="1_l4i43"]
+[ext_resource type="PackedScene" uid="uid://la3hnal7qtts" path="res://assets/kenney_modular-dungeon-kit_1/Models/FBX format/corridor-junction.fbx" id="2_1eex8"]
+[ext_resource type="PackedScene" uid="uid://b33wlhhd81tu" path="res://assets/kenney_modular-dungeon-kit_1/Models/FBX format/corridor-intersection.fbx" id="3_eitx1"]
+[ext_resource type="PackedScene" uid="uid://b8clcgk882jap" path="res://assets/collided_objects/corridor_end_collision.tscn" id="5_mygab"]
+[ext_resource type="PackedScene" uid="uid://c12xh5vh2dqsb" path="res://assets/collided_objects/gate_door_collision.tscn" id="6_8fyqo"]
+[ext_resource type="Environment" uid="uid://btunwl7rs4hth" path="res://isometric_environment.tres" id="6_l4i43"]
+[ext_resource type="PackedScene" uid="uid://bb2mwg1fgxmtr" path="res://assets/player_isometric.tscn" id="8_l4i43"]
+[ext_resource type="PackedScene" uid="uid://cagar6idjyqvf" path="res://assets/collided_objects/corridor_junction_collision.tscn" id="8_tmgdg"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ejswk"]
+
+[node name="Level1_isometric" type="Node3D" unique_id=352922286]
+
+[node name="corridor-end" parent="." unique_id=1930790722 instance=ExtResource("1_l4i43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7995505, 0.006432295, -1.7677937)
+
+[node name="corridor-junction" parent="." unique_id=1339499435 instance=ExtResource("2_1eex8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1.768)
+
+[node name="corridor-intersection" parent="." unique_id=1996664870 instance=ExtResource("3_eitx1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5.651)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=832162306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.080107, -0.19628859, -8.385742)
+use_collision = true
+size = Vector3(26.086792, 1, 17.771484)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=15497984]
+transform = Transform3D(1, 0, 0, 0, 0.81915206, -0.57357645, 0, 0.57357645, 0.81915206, 0, 14.57, 8)
+visible = false
+
+[node name="corridor-end2" parent="." unique_id=1849913041 instance=ExtResource("5_mygab")]
+transform = Transform3D(0.028096152, 0, 0.99960524, 0, 1, 0, -0.99960524, 0, 0.028096152, 6.9215117, 4.7683716e-07, 2.215696)
+
+[node name="corridor-end3" parent="." unique_id=41246780 instance=ExtResource("5_mygab")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.94466, 4.7683716e-07, 13.573346)
+
+[node name="corridor-end5" parent="." unique_id=1876521038 instance=ExtResource("5_mygab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.94466, 4.7683716e-07, 9.573346)
+
+[node name="corridor-end4" parent="." unique_id=815086481 instance=ExtResource("5_mygab")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 16.94466, 4.7683716e-07, 5.5787086)
+
+[node name="gate-door" parent="." unique_id=99461892 instance=ExtResource("6_8fyqo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.047493, 0.30371094, -5.3242493)
+
+[node name="gate-door2" parent="." unique_id=628395048 instance=ExtResource("6_8fyqo")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.174, 0, 9.578)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1550256394]
+environment = ExtResource("6_l4i43")
+camera_attributes = SubResource("CameraAttributesPractical_ejswk")
+
+[node name="UI" type="Control" parent="." unique_id=225346359]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI" unique_id=853772501]
+layout_mode = 0
+offset_left = 569.0
+offset_right = 609.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 36
+text = "A7"
+horizontal_alignment = 1
+
+[node name="corridor-junction_collision" parent="." unique_id=2090484 instance=ExtResource("8_tmgdg")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.945, 0, 9.578)
+
+[node name="Player_isometric" parent="." unique_id=1645700332 instance=ExtResource("8_l4i43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.130264, 0.30371046, -12.138102)

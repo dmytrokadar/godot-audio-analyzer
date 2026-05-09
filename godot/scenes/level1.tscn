@@ -3,16 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://wqsqmojdjkt7" path="res://assets/kenney_modular-dungeon-kit_1/Models/FBX format/corridor-end.fbx" id="1_m7ahb"]
 [ext_resource type="PackedScene" uid="uid://la3hnal7qtts" path="res://assets/kenney_modular-dungeon-kit_1/Models/FBX format/corridor-junction.fbx" id="2_dwgg1"]
 [ext_resource type="PackedScene" uid="uid://b33wlhhd81tu" path="res://assets/kenney_modular-dungeon-kit_1/Models/FBX format/corridor-intersection.fbx" id="3_ru4tf"]
-[ext_resource type="Script" uid="uid://cnywjmqsj077l" path="res://scenes/player.gd" id="4_dwgg1"]
+[ext_resource type="PackedScene" uid="uid://dv6qcy5e7e7xr" path="res://assets/player.tscn" id="4_ejswk"]
 [ext_resource type="PackedScene" uid="uid://b8clcgk882jap" path="res://assets/collided_objects/corridor_end_collision.tscn" id="5_ru4tf"]
 [ext_resource type="PackedScene" uid="uid://c12xh5vh2dqsb" path="res://assets/collided_objects/gate_door_collision.tscn" id="6_6sh32"]
 [ext_resource type="Environment" uid="uid://bml0v0owrpwun" path="res://labyrinth_environment.tres" id="7_ejswk"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6sh32"]
+[ext_resource type="PackedScene" uid="uid://cagar6idjyqvf" path="res://assets/collided_objects/corridor_junction_collision.tscn" id="8_bbk5w"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ejswk"]
-dof_blur_far_enabled = true
-dof_blur_near_enabled = true
 
 [node name="Level1" type="Node3D" unique_id=352922286]
 
@@ -25,15 +22,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1.768)
 [node name="corridor-intersection" parent="." unique_id=1996664870 instance=ExtResource("3_ru4tf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5.651)
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=758728689]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.980789, 6.4667854, -1.5375569)
-script = ExtResource("4_dwgg1")
-
-[node name="Head" type="Camera3D" parent="CharacterBody3D" unique_id=2061986505]
-current = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1318674719]
-shape = SubResource("CapsuleShape3D_6sh32")
+[node name="Player" parent="." unique_id=1645700332 instance=ExtResource("4_ejswk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.58198, 1.1298065, -11.183643)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=832162306]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.080107, -0.19628859, -8.385742)
@@ -42,12 +32,25 @@ size = Vector3(26.086792, 1, 17.771484)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=15497984]
 transform = Transform3D(-0.54563826, 0.14776048, 0.8248914, 0.7902228, 0.41840145, 0.44775906, -0.27897465, 0.89616245, -0.3450595, 0, 14.57, 8)
+visible = false
 
 [node name="corridor-end2" parent="." unique_id=1849913041 instance=ExtResource("5_ru4tf")]
 transform = Transform3D(0.028096152, 0, 0.99960524, 0, 1, 0, -0.99960524, 0, 0.028096152, 6.9215117, 4.7683716e-07, 2.215696)
 
+[node name="corridor-end3" parent="." unique_id=41246780 instance=ExtResource("5_ru4tf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.94466, 4.7683716e-07, 13.573346)
+
+[node name="corridor-end5" parent="." unique_id=1876521038 instance=ExtResource("5_ru4tf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.94466, 4.7683716e-07, 9.573346)
+
+[node name="corridor-end4" parent="." unique_id=815086481 instance=ExtResource("5_ru4tf")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 16.94466, 4.7683716e-07, 5.5787086)
+
 [node name="gate-door" parent="." unique_id=99461892 instance=ExtResource("6_6sh32")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.047493, 0.30371094, -5.3242493)
+
+[node name="gate-door2" parent="." unique_id=628395048 instance=ExtResource("6_6sh32")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.174, 0, 9.578)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1550256394]
 environment = ExtResource("7_ejswk")
@@ -67,3 +70,6 @@ offset_bottom = 23.0
 theme_override_font_sizes/font_size = 36
 text = "A7"
 horizontal_alignment = 1
+
+[node name="corridor-junction_collision" parent="." unique_id=2090484 instance=ExtResource("8_bbk5w")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.945, 0, 9.578)

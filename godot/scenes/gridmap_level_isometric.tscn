@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://do6p3sfncm5b0"]
+
+[ext_resource type="MeshLibrary" uid="uid://pv51mba0oubu" path="res://assets/DungeonTiles.tres" id="1_08vtw"]
+[ext_resource type="PackedScene" uid="uid://bb2mwg1fgxmtr" path="res://assets/player_isometric.tscn" id="2_2olhc"]
+[ext_resource type="Environment" uid="uid://btunwl7rs4hth" path="res://isometric_environment.tres" id="3_2olhc"]
+[ext_resource type="Script" uid="uid://dr1bbtjy3hnxb" path="res://scripts/enemy_summoner.gd" id="4_8xvc8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2olhc"]
+size = Vector3(4, 4, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2olhc"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xvc8"]
+bg_color = Color(0.39094046, 0.6651778, 0.56362015, 0.88235295)
+
+[node name="GridmapLevelIsometric" type="Node3D" unique_id=653174928]
+
+[node name="GridMap" type="GridMap" parent="." unique_id=1395449094]
+mesh_library = ExtResource("1_08vtw")
+cell_size = Vector3(4, 4, 4)
+data = {
+"cells": PackedInt32Array(2, 65535, 17, 5, 65535, 10, 6, 65535, 10, 7, 65535, 10, 9, 65535, 15, 9, 65531, 16, 2, 3, 23, 65538, 4, 1048586, 2, 65531, 655383, 65538, 65530, 1048586, 65538, 65529, 1048586)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Player_isometric" parent="." unique_id=1645700332 groups=["player"] instance=ExtResource("2_2olhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, -2)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1027775997]
+environment = ExtResource("3_2olhc")
+
+[node name="EnemySummoner" type="Node3D" parent="." unique_id=1173358495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2, 2)
+script = ExtResource("4_8xvc8")
+
+[node name="Area3D" type="Area3D" parent="EnemySummoner" unique_id=637693670]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemySummoner/Area3D" unique_id=303979815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_2olhc")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="EnemySummoner" unique_id=2021158595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material = SubResource("StandardMaterial3D_2olhc")
+
+[node name="Control" type="Control" parent="." unique_id=1128560042]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Forward" type="Panel" parent="Control" unique_id=1212641258]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.59900004
+anchor_top = 0.49500003
+anchor_right = 0.59900004
+anchor_bottom = 0.49500003
+offset_left = -20.048035
+offset_top = -20.76001
+offset_right = 19.951965
+offset_bottom = 19.240143
+rotation = 0.7941248
+pivot_offset = Vector2(20, 20)
+theme_override_styles/panel = SubResource("StyleBoxFlat_8xvc8")
+metadata/_edit_use_anchors_ = true
+
+[node name="ForwardLabel" type="Label" parent="Control/Forward" unique_id=595265748]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset = Vector2(20, 20)
+text = "E6"
+
+[node name="Backward" type="Panel" parent="Control" unique_id=634701343]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5990001
+anchor_top = 0.4950618
+anchor_right = 0.5990001
+anchor_bottom = 0.4950618
+offset_left = -232.04803
+offset_top = 114.19998
+offset_right = -192.04779
+offset_bottom = 154.20035
+rotation = 0.7941248
+pivot_offset = Vector2(20, 20)
+theme_override_styles/panel = SubResource("StyleBoxFlat_8xvc8")
+metadata/_edit_use_anchors_ = true
+
+[node name="BackwardLabel" type="Label" parent="Control/Backward" unique_id=1940833473]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset = Vector2(20, 20)
+text = "E6"
+
+[node name="Left" type="Panel" parent="Control" unique_id=2095155401]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5990001
+anchor_top = 0.28827167
+anchor_right = 0.5990001
+anchor_bottom = 0.28827167
+offset_left = -232.04803
+offset_top = 114.19998
+offset_right = -192.04779
+offset_bottom = 154.20035
+rotation = 0.7941248
+pivot_offset = Vector2(20, 20)
+theme_override_styles/panel = SubResource("StyleBoxFlat_8xvc8")
+metadata/_edit_use_anchors_ = true
+
+[node name="LeftLabel" type="Label" parent="Control/Left" unique_id=1429408862]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset = Vector2(20, 20)
+text = "E6"
+
+[node name="Right" type="Panel" parent="Control" unique_id=1535961394]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.77695143
+anchor_top = 0.4873457
+anchor_right = 0.77695143
+anchor_bottom = 0.4873457
+offset_left = -232.04803
+offset_top = 114.19998
+offset_right = -192.04779
+offset_bottom = 154.20035
+rotation = 0.7941248
+pivot_offset = Vector2(20, 20)
+theme_override_styles/panel = SubResource("StyleBoxFlat_8xvc8")
+metadata/_edit_use_anchors_ = true
+
+[node name="RightLabel" type="Label" parent="Control/Right" unique_id=203066572]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset = Vector2(20, 20)
+text = "E6"
+
+[connection signal="body_entered" from="EnemySummoner/Area3D" to="EnemySummoner" method="_on_area_3d_body_entered"]
