@@ -1,9 +1,11 @@
 [gd_scene format=4 uid="uid://y10obn1wyepk"]
 
+[ext_resource type="Material" uid="uid://dj7s41pi6lrs8" path="res://assets/shaders/transparent_circle.tres" id="1_bqoff"]
 [ext_resource type="Texture2D" uid="uid://d4hhj7go4gycw" path="res://assets/kenney_modular-dungeon-kit_1/Models/GLB format/Textures/colormap.png" id="1_vqw2j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ae8xx"]
 resource_name = "colormap"
+next_pass = ExtResource("1_bqoff")
 cull_mode = 2
 albedo_texture = ExtResource("1_vqw2j")
 

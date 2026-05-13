@@ -484,6 +484,7 @@ data = PackedVector3Array(-8.436, 0.099999994, 6.7124996, -8.4972, 0, 6.7478, -8
 resource_name = "colormap"
 cull_mode = 2
 albedo_texture = ExtResource("1_20tf6")
+distance_fade_max_distance = 5.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_vspei"]
 _surfaces = [{

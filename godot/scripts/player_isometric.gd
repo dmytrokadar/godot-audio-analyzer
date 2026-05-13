@@ -6,10 +6,16 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
-@export var FORWARD_STRING: float = 82.0 
+@export_category("Notes")
+@export var FORWARD_STRING: float = 82.0
 @export var BACKWARD_STRING: float = 110.0
 @export var LEFT_STRING: float = 146.0
 @export var RIGHT_STRING: float = 196.0
+
+@export var notes_scale = [82.0, 110.0, 146.0, 196.0, 85.0, 95.0, 440.0]
+
+@export_category("Other")
+@export var MOVES_TO_SWAP_NOTES: int = 2
 
 @export var GRID_SIZE = 4
 @export var TRAVEL_TIME = 1
@@ -18,9 +24,12 @@ const JUMP_VELOCITY = 4.5
 @export var LERP_SPEED = 10.0
 
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
+@onready var camera_ray_cast_3d: RayCast3D = $Head/CameraRayCast3D
+
 @onready var gd_audio_analyzer: GdAudioAnalyzer = AudioAnalyzer
 @onready var player_state: PlayerState = PlayerState
 @onready var note_timer: Timer = $NoteTimer
+@onready var settings: Control = $"../Settings"
 
 @onready var forward_panel: Panel = $"../Control/Forward"
 @onready var forward_label: Label = $"../Control/Forward/ForwardLabel"
@@ -31,16 +40,14 @@ const JUMP_VELOCITY = 4.5
 @onready var right_panel: Panel = $"../Control/Right"
 @onready var right_label: Label = $"../Control/Right/RightLabel"
 
-
-var is_mouse_visible = false
 var just_pressed_note = 0.0
-
+var moves_left = MOVES_TO_SWAP_NOTES
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	global_position = player_state.player_pos
+	settings.notes_display_mode_changed.connect(change_note_text)
 	change_note_text()
-	print(gd_audio_analyzer.hz_to_note_string_converter(146.83))
 
 
 func is_note_just_pressed(note: float, expected: float) -> bool:
@@ -59,15 +66,6 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		
-	# unattaching cursor for debug purposes
-	if Input.is_action_just_pressed("unattach_cursor"):
-		if is_mouse_visible:
-			is_mouse_visible = false
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		else:
-			is_mouse_visible = true
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	var move_dir = Vector2(0, 0)
 	
@@ -111,18 +109,24 @@ func _physics_process(delta: float) -> void:
 		print(target_pos)
 		
 		tw.tween_property(self, "global_position", target_pos, TRAVEL_TIME).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		
+		moves_left -= 1
+		
+		if moves_left == 0:
+			swap_move_notes()
+			
+			moves_left = MOVES_TO_SWAP_NOTES
+			change_note_text()
 		#velocity.x = move_toward(global_position.x + move_dir.x, 0, SPEED)
 		#velocity.z = move_toward(global_position.z + move_dir.y, 0, SPEED)
 		#global_position.x += move_dir.x
 		#global_position.z += move_dir.y
-
+	
+	RenderingServer.global_shader_parameter_set("player_pos", global_position)
 	move_and_slide()
 
 
 func round_to_center(inp: Vector3):
-	#print("start")
-	#print(inp)
-	#print(floorf(inp.x / 4.0))
 	return Vector3(floorf(inp.x / 4.0) * 4.0 + 2.0, inp.y, floorf(inp.z / 4.0) * 4.0 + 2.0)
 
 
@@ -141,11 +145,28 @@ func try_move(dir: Vector2) -> bool:
 	return true
 
 
+func swap_move_notes():
+	var notes_array = notes_scale.duplicate_deep()
+	notes_array.shuffle()
+	FORWARD_STRING = notes_array[0]
+	BACKWARD_STRING = notes_array[1]
+	LEFT_STRING = notes_array[2]
+	RIGHT_STRING = notes_array[3]
+	
+	print("Shufled, ", FORWARD_STRING, " ", BACKWARD_STRING, " ", LEFT_STRING, " ", RIGHT_STRING)
+
+
 func change_note_text():
-	forward_label.text = "E2"
-	backward_label.text = "A2"
-	left_label.text = "D3"
-	right_label.text = "G3"
+	if player_state.display_mode_notes:
+		forward_label.text = gd_audio_analyzer.hz_to_note_string_converter(FORWARD_STRING)
+		backward_label.text = gd_audio_analyzer.hz_to_note_string_converter(BACKWARD_STRING)
+		left_label.text = gd_audio_analyzer.hz_to_note_string_converter(LEFT_STRING)
+		right_label.text = gd_audio_analyzer.hz_to_note_string_converter(RIGHT_STRING)
+	else:
+		forward_label.text = gd_audio_analyzer.hz_to_tabulation_converter(FORWARD_STRING)
+		backward_label.text = gd_audio_analyzer.hz_to_tabulation_converter(BACKWARD_STRING)
+		left_label.text = gd_audio_analyzer.hz_to_tabulation_converter(LEFT_STRING)
+		right_label.text = gd_audio_analyzer.hz_to_tabulation_converter(RIGHT_STRING)
 
 
 func _on_note_timer_timeout() -> void:

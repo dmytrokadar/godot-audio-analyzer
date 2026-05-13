@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dj7s41pi6lrs8"]
+
+[ext_resource type="Shader" uid="uid://65yo16s8bwv3" path="res://assets/shaders/transparent_circle.gdshader" id="1_6fmvu"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_6fmvu")
+shader_parameter/mask_radius = 2.5
+shader_parameter/feather = 0.5

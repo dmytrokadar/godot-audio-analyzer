@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://do6p3sfncm5b0"]
 
+[ext_resource type="Script" uid="uid://gdgayo30mfbv" path="res://scenes/game_controller.gd" id="1_7yi80"]
 [ext_resource type="MeshLibrary" uid="uid://pv51mba0oubu" path="res://assets/DungeonTiles.tres" id="1_08vtw"]
 [ext_resource type="PackedScene" uid="uid://bb2mwg1fgxmtr" path="res://assets/player_isometric.tscn" id="2_2olhc"]
 [ext_resource type="Environment" uid="uid://btunwl7rs4hth" path="res://isometric_environment.tres" id="3_2olhc"]
 [ext_resource type="Script" uid="uid://dr1bbtjy3hnxb" path="res://scripts/enemy_summoner.gd" id="4_8xvc8"]
+[ext_resource type="PackedScene" uid="uid://c5vbgyko843v" path="res://scenes/Settings.tscn" id="5_yj4l7"]
+[ext_resource type="PackedScene" uid="uid://c12xh5vh2dqsb" path="res://assets/collided_objects/gate_door_collision.tscn" id="6_tr1fa"]
+[ext_resource type="Script" uid="uid://o3viv5pckrhl" path="res://scripts/dialogue_manager.gd" id="7_ekmtc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2olhc"]
 size = Vector3(4, 4, 4)
@@ -14,7 +18,14 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xvc8"]
 bg_color = Color(0.39094046, 0.6651778, 0.56362015, 0.88235295)
 
+[sub_resource type="LabelSettings" id="LabelSettings_tr1fa"]
+font_size = 22
+
 [node name="GridmapLevelIsometric" type="Node3D" unique_id=653174928]
+
+[node name="GameController" type="Node3D" parent="." unique_id=1221074209]
+process_mode = 3
+script = ExtResource("1_7yi80")
 
 [node name="GridMap" type="GridMap" parent="." unique_id=1395449094]
 mesh_library = ExtResource("1_08vtw")
@@ -191,4 +202,91 @@ rotation = -1.5707964
 pivot_offset = Vector2(20, 20)
 text = "E6"
 
+[node name="gate-door" parent="." unique_id=99461892 instance=ExtResource("6_tr1fa")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.456432, 1.3686876, -2.0439444)
+
+[node name="gate-door2" parent="." unique_id=2085253344 instance=ExtResource("6_tr1fa")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 32.456432, 1.3686876, -2.0439444)
+DOOR_NUM = 1
+
+[node name="DialogueBox" type="Control" parent="." unique_id=1553236118]
+process_mode = 3
+visible = false
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("7_ekmtc")
+
+[node name="Panel" type="Panel" parent="DialogueBox" unique_id=646178162]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="DialogueBox/Panel" unique_id=1557324160]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Test"
+label_settings = SubResource("LabelSettings_tr1fa")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HintLabel" type="Label" parent="DialogueBox/Panel" unique_id=1863930318]
+visible = false
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -45.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "[H] Show Hint"
+label_settings = SubResource("LabelSettings_tr1fa")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ReplayLabel" type="Label" parent="DialogueBox/Panel" unique_id=1482505474]
+visible = false
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_right = 200.0
+grow_vertical = 0
+text = "[R] Replay Sound"
+label_settings = SubResource("LabelSettings_tr1fa")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DialogueTimer" type="Timer" parent="DialogueBox" unique_id=1179373154]
+wait_time = 5.0
+one_shot = true
+
+[node name="Settings" parent="." unique_id=841244356 instance=ExtResource("5_yj4l7")]
+process_mode = 3
+visible = false
+
 [connection signal="body_entered" from="EnemySummoner/Area3D" to="EnemySummoner" method="_on_area_3d_body_entered"]
+[connection signal="display_dialogue" from="gate-door" to="DialogueBox" method="_on_gatedoor_display_dialogue"]
+[connection signal="display_dialogue" from="gate-door2" to="DialogueBox" method="_on_gatedoor_display_dialogue"]
+[connection signal="timeout" from="DialogueBox/DialogueTimer" to="DialogueBox" method="_on_dialogue_timer_timeout"]

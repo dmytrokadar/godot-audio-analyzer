@@ -5,6 +5,8 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6sh32"]
 radius = 0.45
 
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_gji4n"]
+
 [node name="Player_isometric" type="CharacterBody3D" unique_id=1645700332]
 script = ExtResource("1_gji4n")
 
@@ -12,6 +14,9 @@ script = ExtResource("1_gji4n")
 transform = Transform3D(0.70710677, 0.40860704, -0.5770964, 0, 0.8161376, 0.5778576, 0.70710677, -0.40860704, 0.5770964, -4, 6, 4)
 current = true
 size = 10.0
+
+[node name="CameraRayCast3D" type="RayCast3D" parent="Head" unique_id=1647074621]
+target_position = Vector3(0, 0, -1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2025188683]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -25,5 +30,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="NoteTimer" type="Timer" parent="." unique_id=1283698021]
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1354067756]
+stream = SubResource("AudioStreamMicrophone_gji4n")
 
 [connection signal="timeout" from="NoteTimer" to="." method="_on_note_timer_timeout"]

@@ -13,7 +13,7 @@ extends Control
 # inspiration https://docs.godotengine.org/en/stable/classes/class_audiostreamgenerator.html
 var playback # Will hold the AudioStreamGeneratorPlayback.
 @onready var sample_hz = $AudioStreamPlayer.stream.mix_rate
-var pulse_hz = 120.0 # The frequency of the sound wave. 440.0
+var pulse_hz = 120.0
 var phase = 0.0
 var round_ended = false
 
