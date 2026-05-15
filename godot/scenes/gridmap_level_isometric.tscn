@@ -203,11 +203,15 @@ pivot_offset = Vector2(20, 20)
 text = "E6"
 
 [node name="gate-door" parent="." unique_id=99461892 instance=ExtResource("6_tr1fa")]
+process_mode = 2
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.456432, 1.3686876, -2.0439444)
+NOTE_HZ = 82.0
 
 [node name="gate-door2" parent="." unique_id=2085253344 instance=ExtResource("6_tr1fa")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 32.456432, 1.3686876, -2.0439444)
+process_mode = 2
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 31.456432, 1.3686876, -2.0439444)
 DOOR_NUM = 1
+NOTE_HZ = 140.0
 
 [node name="DialogueBox" type="Control" parent="." unique_id=1553236118]
 process_mode = 3
@@ -238,6 +242,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Test"
+label_settings = SubResource("LabelSettings_tr1fa")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HintDialogueLabel" type="Label" parent="DialogueBox/Panel" unique_id=347646611]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hint"
 label_settings = SubResource("LabelSettings_tr1fa")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -288,5 +306,7 @@ visible = false
 
 [connection signal="body_entered" from="EnemySummoner/Area3D" to="EnemySummoner" method="_on_area_3d_body_entered"]
 [connection signal="display_dialogue" from="gate-door" to="DialogueBox" method="_on_gatedoor_display_dialogue"]
+[connection signal="guessed_signal" from="gate-door" to="GameController" method="_on_gatedoor_guessed_signal"]
 [connection signal="display_dialogue" from="gate-door2" to="DialogueBox" method="_on_gatedoor_display_dialogue"]
+[connection signal="guessed_signal" from="gate-door2" to="GameController" method="_on_gatedoor_guessed_signal"]
 [connection signal="timeout" from="DialogueBox/DialogueTimer" to="DialogueBox" method="_on_dialogue_timer_timeout"]

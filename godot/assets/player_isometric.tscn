@@ -11,7 +11,7 @@ radius = 0.45
 script = ExtResource("1_gji4n")
 
 [node name="Head" type="Camera3D" parent="." unique_id=1960466097]
-transform = Transform3D(0.70710677, 0.40860704, -0.5770964, 0, 0.8161376, 0.5778576, 0.70710677, -0.40860704, 0.5770964, -4, 6, 4)
+transform = Transform3D(0.7071067, 0.40860704, -0.5770964, 0, 0.8161376, 0.5778576, 0.7071067, -0.40860704, 0.5770964, -4, 6, 4)
 current = true
 size = 10.0
 
