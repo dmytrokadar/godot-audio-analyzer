@@ -33,7 +33,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	#print(gd_audio_analyzer.get_frequency())
 	if game_controller.is_guessing_mode and current_door_guessing:
-		if gd_audio_analyzer.get_frequency() == NOTE_HZ[note_num] or Input.is_action_just_pressed("open_doors"):
+		if (gd_audio_analyzer.get_frequency() < NOTE_HZ[note_num] + 2.0 and gd_audio_analyzer.get_frequency() > NOTE_HZ[note_num] - 2.0)  or Input.is_action_just_pressed("open_doors"):
 			guessed_note.emit(note_num)
 			note_num += 1
 			if note_num == NOTE_HZ.size():

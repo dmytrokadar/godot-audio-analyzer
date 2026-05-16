@@ -46,7 +46,7 @@ var ena = true
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	#global_position = player_state.player_pos
+	global_position = player_state.player_pos
 	settings.notes_display_mode_changed.connect(change_note_text)
 	change_note_text()
 	#RenderingServer.global_shader_parameter_add("player_pos", RenderingServer.GLOBAL_VAR_TYPE_VEC3, Vector3.ZERO)
@@ -98,11 +98,11 @@ func _physics_process(delta: float) -> void:
 		move_dir.y = GRID_SIZE
 		is_moving = try_move(move_dir)
 	
-	if Input.is_action_just_pressed("enable_something"):
-		#ProjectSettings.set_setting("shader_globals/ena", !ProjectSettings.get_setting("shader_globals/ena"))
-		ena = !ena
-		RenderingServer.global_shader_parameter_set("ena", ena)
-		print(RenderingServer.global_shader_parameter_get("ena"))
+	#if Input.is_action_just_pressed("enable_something"):
+		##ProjectSettings.set_setting("shader_globals/ena", !ProjectSettings.get_setting("shader_globals/ena"))
+		#ena = !ena
+		#RenderingServer.global_shader_parameter_set("ena", ena)
+		#print(RenderingServer.global_shader_parameter_get("ena"))
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	#var input_dir := Input.get_vector("move_left", "move_right", "move_forvard", "move_backwards")

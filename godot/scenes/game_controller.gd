@@ -4,6 +4,7 @@ extends Node3D
 @onready var settings: Control = $"../Settings"
 @onready var dialogue_box: Control = $"../DialogueBox"
 
+
 var is_mouse_visible = false
 var is_guessing_mode = false
 

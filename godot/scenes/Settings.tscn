@@ -65,6 +65,7 @@ offset_right = 128.0
 offset_bottom = 16.06398
 
 [node name="OutputOption" type="OptionButton" parent="Panel" unique_id=1214434695]
+visible = false
 layout_mode = 0
 offset_left = 223.5
 offset_top = 260.0
@@ -80,6 +81,7 @@ offset_bottom = 132.0
 text = "Input Device"
 
 [node name="Output" type="Label" parent="Panel" unique_id=690874485]
+visible = false
 layout_mode = 0
 offset_left = 295.5
 offset_top = 216.0

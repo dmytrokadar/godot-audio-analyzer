@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c12xh5vh2dqsb" path="res://assets/collided_objects/gate_door_collision.tscn" id="6_tr1fa"]
 [ext_resource type="Script" uid="uid://o3viv5pckrhl" path="res://scripts/dialogue_manager.gd" id="7_ekmtc"]
 [ext_resource type="PackedScene" uid="uid://cajcxew7235xb" path="res://scenes/custom_check_box.tscn" id="8_virqp"]
+[ext_resource type="Texture2D" uid="uid://h0xb544jkrso" path="res://assets/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0000.png" id="9_virqp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2olhc"]
 size = Vector3(4, 4, 4)
@@ -17,7 +18,10 @@ size = Vector3(4, 4, 4)
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xvc8"]
-bg_color = Color(0.39094046, 0.6651778, 0.56362015, 0.88235295)
+bg_color = Color(0.8844805, 0.563845, 0.44526827, 0.88235295)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_detail = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_tr1fa"]
 font_size = 22
@@ -74,18 +78,17 @@ size_flags_horizontal = 4
 [node name="Forward" type="Panel" parent="Control" unique_id=1212641258]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.59900004
-anchor_top = 0.49500003
-anchor_right = 0.59900004
-anchor_bottom = 0.49500003
-offset_left = -20.048035
-offset_top = -20.76001
-offset_right = 19.951965
-offset_bottom = 19.240143
+anchor_left = 0.61600006
+anchor_top = 0.46300003
+anchor_right = 0.61600006
+anchor_bottom = 0.46300003
+offset_left = -39.63208
+offset_top = -40.024017
+offset_right = 40.36792
+offset_bottom = 39.975983
 rotation = 0.7941248
-pivot_offset = Vector2(20, 20)
+pivot_offset = Vector2(40, 40)
 theme_override_styles/panel = SubResource("StyleBoxFlat_8xvc8")
-metadata/_edit_use_anchors_ = true
 
 [node name="ForwardLabel" type="Label" parent="Control/Forward" unique_id=595265748]
 layout_mode = 1
@@ -103,20 +106,23 @@ grow_vertical = 2
 rotation = -1.5707964
 pivot_offset = Vector2(20, 20)
 text = "E6"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Backward" type="Panel" parent="Control" unique_id=634701343]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5990001
-anchor_top = 0.4950618
-anchor_right = 0.5990001
-anchor_bottom = 0.4950618
-offset_left = -232.04803
-offset_top = 114.19998
-offset_right = -192.04779
-offset_bottom = 154.20035
-rotation = 0.7941248
-pivot_offset = Vector2(20, 20)
+anchor_left = 0.39800003
+anchor_top = 0.73300004
+anchor_right = 0.39800003
+anchor_bottom = 0.73300004
+offset_left = -40.496033
+offset_top = -39.98404
+offset_right = 39.503967
+offset_bottom = 40.01596
+rotation = -2.3561945
+pivot_offset = Vector2(40, 40)
 theme_override_styles/panel = SubResource("StyleBoxFlat_8xvc8")
 metadata/_edit_use_anchors_ = true
 
@@ -133,23 +139,26 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -1.5707964
+rotation = 1.5707964
 pivot_offset = Vector2(20, 20)
 text = "E6"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Left" type="Panel" parent="Control" unique_id=2095155401]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5990001
-anchor_top = 0.28827167
-anchor_right = 0.5990001
-anchor_bottom = 0.28827167
-offset_left = -232.04803
-offset_top = 114.19998
-offset_right = -192.04779
-offset_bottom = 154.20035
-rotation = 0.7941248
-pivot_offset = Vector2(20, 20)
+anchor_left = 0.39800003
+anchor_top = 0.46300003
+anchor_right = 0.39800003
+anchor_bottom = 0.46300003
+offset_left = -40.496033
+offset_top = -40.024017
+offset_right = 39.503967
+offset_bottom = 39.975983
+rotation = -0.7853982
+pivot_offset = Vector2(40, 40)
 theme_override_styles/panel = SubResource("StyleBoxFlat_8xvc8")
 metadata/_edit_use_anchors_ = true
 
@@ -166,23 +175,25 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -1.5707964
 pivot_offset = Vector2(20, 20)
 text = "E6"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Right" type="Panel" parent="Control" unique_id=1535961394]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.77695143
-anchor_top = 0.4873457
-anchor_right = 0.77695143
-anchor_bottom = 0.4873457
-offset_left = -232.04803
-offset_top = 114.19998
-offset_right = -192.04779
-offset_bottom = 154.20035
-rotation = 0.7941248
-pivot_offset = Vector2(20, 20)
+anchor_left = 0.61600006
+anchor_top = 0.73300004
+anchor_right = 0.61600006
+anchor_bottom = 0.73300004
+offset_left = -39.63208
+offset_top = -39.98404
+offset_right = 40.36792
+offset_bottom = 40.01596
+rotation = 2.3561945
+pivot_offset = Vector2(40, 40)
 theme_override_styles/panel = SubResource("StyleBoxFlat_8xvc8")
 metadata/_edit_use_anchors_ = true
 
@@ -199,9 +210,12 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -1.5707964
+rotation = -3.1415927
 pivot_offset = Vector2(20, 20)
 text = "E6"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="gate-door" parent="." unique_id=99461892 instance=ExtResource("6_tr1fa")]
 process_mode = 2
@@ -216,7 +230,6 @@ NOTE_HZ = Array[float]([100.0, 200.0])
 
 [node name="DialogueBox" type="Control" parent="." unique_id=1553236118]
 process_mode = 3
-visible = false
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 3
 anchors_preset = 12
@@ -235,6 +248,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="DialogueBox/Panel" unique_id=1476271684]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -80.0
+offset_right = 640.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_virqp")
+region_rect = Rect2(5, 5, 22, 22)
 
 [node name="Label" type="Label" parent="DialogueBox/Panel" unique_id=1557324160]
 layout_mode = 1
