@@ -1,9 +1,11 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://dj7s41pi6lrs8"]
 
 [ext_resource type="Shader" uid="uid://65yo16s8bwv3" path="res://assets/shaders/transparent_circle.gdshader" id="1_6fmvu"]
+[ext_resource type="Texture2D" uid="uid://d4hhj7go4gycw" path="res://assets/kenney_modular-dungeon-kit_1/Models/GLB format/Textures/colormap.png" id="2_fx4xp"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_6fmvu")
+shader_parameter/albedo_texture = ExtResource("2_fx4xp")
 shader_parameter/mask_radius = 2.5
 shader_parameter/feather = 0.5

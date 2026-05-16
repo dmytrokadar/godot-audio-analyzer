@@ -6,7 +6,7 @@ extends Node3D
 @onready var area_3d: Area3D = $Area3D
 
 @export var DOOR_NUM: int = 0
-@export var NOTE_HZ: float = 100
+@export var NOTE_HZ: Array[float] = [100.0]
 
 var door_open_flag = false
 
@@ -15,10 +15,12 @@ var playback # Will hold the AudioStreamGeneratorPlayback.
 var pulse_hz = 120.0
 var phase = 0.0
 
+var note_num = 0
 var guessed = false
 var current_door_guessing = false
 
-signal display_dialogue(door_num: int, door_entity: Node3D)
+signal display_dialogue(door_num: int, notes_size: int, door_entity: Node3D)
+signal guessed_note(note_num: int)
 signal guessed_signal
 
 
@@ -31,10 +33,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	#print(gd_audio_analyzer.get_frequency())
 	if game_controller.is_guessing_mode and current_door_guessing:
-		if gd_audio_analyzer.get_frequency() == NOTE_HZ or Input.is_action_just_pressed("open_doors"):
-			door_open_flag = !door_open_flag
-			current_door_guessing = false
-			$AnimationPlayer.play("open" if door_open_flag else "close")
+		if gd_audio_analyzer.get_frequency() == NOTE_HZ[note_num] or Input.is_action_just_pressed("open_doors"):
+			guessed_note.emit(note_num)
+			note_num += 1
+			if note_num == NOTE_HZ.size():
+				door_open_flag = !door_open_flag
+				current_door_guessing = false
+				$AnimationPlayer.play("open" if door_open_flag else "close")
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
@@ -43,7 +48,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		if body.is_in_group("player"):
 			print("yes")
 			#play_sound()
-			display_dialogue.emit(DOOR_NUM, self)
+			display_dialogue.emit(DOOR_NUM, NOTE_HZ.size(), self)
 			current_door_guessing = true
 
 

@@ -884,7 +884,6 @@ data = PackedVector3Array(-8.436, 0.099999994, 6.7124996, -8.4972, 0, 6.7478, -8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a7cf8"]
 resource_name = "colormap"
-next_pass = ExtResource("1_bqoff")
 cull_mode = 2
 albedo_texture = ExtResource("1_vqw2j")
 
@@ -1802,6 +1801,7 @@ data = PackedVector3Array(-1.2451, 0, -1.3745999, -1.2968999, 0, -1.5677999, -1.
 [node name="corridor-corner" type="MeshInstance3D" parent="corridor-corner2" unique_id=1910435003]
 mesh = SubResource("ArrayMesh_8ktos")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="corridor-corner2/corridor-corner" unique_id=1712395652]
 
@@ -1813,6 +1813,7 @@ shape = SubResource("ConcavePolygonShape3D_bqoff")
 [node name="corridor-end" type="MeshInstance3D" parent="corridor-end2" unique_id=494052245]
 mesh = SubResource("ArrayMesh_qbfot")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="corridor-end2/corridor-end" unique_id=351119646]
 
@@ -1824,6 +1825,7 @@ shape = SubResource("ConcavePolygonShape3D_b6g15")
 [node name="corridor-intersection" type="MeshInstance3D" parent="corridor-intersection2" unique_id=650013493]
 mesh = SubResource("ArrayMesh_yhyk7")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="corridor-intersection2/corridor-intersection" unique_id=595956125]
 
@@ -1835,6 +1837,7 @@ shape = SubResource("ConcavePolygonShape3D_6e6cx")
 [node name="corridor-junction" type="MeshInstance3D" parent="corridor-junction2" unique_id=1173578470]
 mesh = SubResource("ArrayMesh_em6ew")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="corridor-junction2/corridor-junction" unique_id=1224555767]
 
@@ -1846,6 +1849,7 @@ shape = SubResource("ConcavePolygonShape3D_daq77")
 [node name="corridor-transition" type="MeshInstance3D" parent="corridor-transition2" unique_id=686037571]
 mesh = SubResource("ArrayMesh_objyu")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="corridor-transition2/corridor-transition" unique_id=1653744534]
 
@@ -1857,6 +1861,7 @@ shape = SubResource("ConcavePolygonShape3D_a4ic5")
 [node name="corridor-wide-corner" type="MeshInstance3D" parent="corridor-wide-corner2" unique_id=1028161008]
 mesh = SubResource("ArrayMesh_yeolp")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="corridor-wide-corner2/corridor-wide-corner" unique_id=97821731]
 
@@ -1868,6 +1873,7 @@ shape = SubResource("ConcavePolygonShape3D_kxpaw")
 [node name="corridor-wide-end" type="MeshInstance3D" parent="corridor-wide-end2" unique_id=16318314]
 mesh = SubResource("ArrayMesh_cu2d6")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="corridor-wide-end2/corridor-wide-end" unique_id=177339603]
 
@@ -1879,6 +1885,7 @@ shape = SubResource("ConcavePolygonShape3D_0h13p")
 [node name="corridor-wide-intersection" type="MeshInstance3D" parent="corridor-wide-intersection2" unique_id=337572704]
 mesh = SubResource("ArrayMesh_y67xd")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="corridor-wide-intersection2/corridor-wide-intersection" unique_id=1820839426]
 
@@ -1890,6 +1897,7 @@ shape = SubResource("ConcavePolygonShape3D_pooil")
 [node name="corridor-wide-junction" type="MeshInstance3D" parent="corridor-wide-junction2" unique_id=245337110]
 mesh = SubResource("ArrayMesh_3iaf8")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="corridor-wide-junction2/corridor-wide-junction" unique_id=1180991195]
 
@@ -1901,6 +1909,7 @@ shape = SubResource("ConcavePolygonShape3D_ac1k4")
 [node name="corridor-wide" type="MeshInstance3D" parent="corridor-wide2" unique_id=92900711]
 mesh = SubResource("ArrayMesh_1st2s")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="corridor-wide2/corridor-wide" unique_id=38882517]
 
@@ -1912,6 +1921,7 @@ shape = SubResource("ConcavePolygonShape3D_ktetm")
 [node name="corridor" type="MeshInstance3D" parent="corridor2" unique_id=262202500]
 mesh = SubResource("ArrayMesh_d5vy7")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="corridor2/corridor" unique_id=2084587805]
 
@@ -1923,11 +1933,13 @@ shape = SubResource("ConcavePolygonShape3D_j6cnl")
 [node name="gate-door-window" type="MeshInstance3D" parent="gate-door-window2" unique_id=689085448]
 mesh = SubResource("ArrayMesh_h7dpj")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="door" type="MeshInstance3D" parent="gate-door-window2/gate-door-window" unique_id=116718891]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 2.9832021e-09)
 mesh = SubResource("ArrayMesh_e5y0m")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="gate-door-window2/gate-door-window" unique_id=1709050973]
 
@@ -1942,11 +1954,13 @@ libraries/ = SubResource("AnimationLibrary_4o0mc")
 [node name="gate-door" type="MeshInstance3D" parent="gate-door2" unique_id=263682733]
 mesh = SubResource("ArrayMesh_0n2bl")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="door" type="MeshInstance3D" parent="gate-door2/gate-door" unique_id=1095858813]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 2.9832021e-09)
 mesh = SubResource("ArrayMesh_3pl7p")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="gate-door2/gate-door" unique_id=2062275435]
 
@@ -1961,11 +1975,13 @@ libraries/ = SubResource("AnimationLibrary_8gx21")
 [node name="gate-metal-bars" type="MeshInstance3D" parent="gate-metal-bars2" unique_id=485610721]
 mesh = SubResource("ArrayMesh_rhu81")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="gate" type="MeshInstance3D" parent="gate-metal-bars2/gate-metal-bars" unique_id=807768127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0, 0)
 mesh = SubResource("ArrayMesh_jiqeb")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="gate-metal-bars2/gate-metal-bars" unique_id=852501643]
 
@@ -1977,6 +1993,7 @@ shape = SubResource("ConcavePolygonShape3D_q42yc")
 [node name="gate" type="MeshInstance3D" parent="gate2" unique_id=479503176]
 mesh = SubResource("ArrayMesh_c1q45")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="gate2/gate" unique_id=1200601625]
 
@@ -1988,6 +2005,7 @@ shape = SubResource("ConcavePolygonShape3D_tnpd4")
 [node name="room-corner" type="MeshInstance3D" parent="room-corner2" unique_id=1878023926]
 mesh = SubResource("ArrayMesh_q6frm")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="room-corner2/room-corner" unique_id=27049079]
 
@@ -1999,6 +2017,7 @@ shape = SubResource("ConcavePolygonShape3D_q7ghg")
 [node name="room-large-variation" type="MeshInstance3D" parent="room-large-variation2" unique_id=274153539]
 mesh = SubResource("ArrayMesh_jo3qq")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="room-large-variation2/room-large-variation" unique_id=954573693]
 
@@ -2010,6 +2029,7 @@ shape = SubResource("ConcavePolygonShape3D_gj5j6")
 [node name="room-large" type="MeshInstance3D" parent="room-large2" unique_id=2005710078]
 mesh = SubResource("ArrayMesh_cpo26")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="room-large2/room-large" unique_id=1834695304]
 
@@ -2021,6 +2041,7 @@ shape = SubResource("ConcavePolygonShape3D_mc5jm")
 [node name="room-small-variation" type="MeshInstance3D" parent="room-small-variation2" unique_id=1515459231]
 mesh = SubResource("ArrayMesh_ogx5w")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="room-small-variation2/room-small-variation" unique_id=1371202304]
 
@@ -2032,6 +2053,7 @@ shape = SubResource("ConcavePolygonShape3D_qvkca")
 [node name="room-small" type="MeshInstance3D" parent="room-small2" unique_id=343276856]
 mesh = SubResource("ArrayMesh_njnm6")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="room-small2/room-small" unique_id=1346055745]
 
@@ -2043,6 +2065,7 @@ shape = SubResource("ConcavePolygonShape3D_7ksxh")
 [node name="room-wide-variation" type="MeshInstance3D" parent="room-wide-variation2" unique_id=1164037196]
 mesh = SubResource("ArrayMesh_y0lof")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="room-wide-variation2/room-wide-variation" unique_id=369037427]
 
@@ -2054,6 +2077,7 @@ shape = SubResource("ConcavePolygonShape3D_y5el3")
 [node name="room-wide" type="MeshInstance3D" parent="room-wide2" unique_id=17069837]
 mesh = SubResource("ArrayMesh_86ykc")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="room-wide2/room-wide" unique_id=1979689212]
 
@@ -2065,6 +2089,7 @@ shape = SubResource("ConcavePolygonShape3D_7ttik")
 [node name="stairs-wide" type="MeshInstance3D" parent="stairs-wide2" unique_id=1417731327]
 mesh = SubResource("ArrayMesh_indl6")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="stairs-wide2/stairs-wide" unique_id=518793848]
 
@@ -2076,6 +2101,7 @@ shape = SubResource("ConcavePolygonShape3D_st2aa")
 [node name="stairs" type="MeshInstance3D" parent="stairs2" unique_id=889338298]
 mesh = SubResource("ArrayMesh_d5sg4")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="stairs2/stairs" unique_id=1409202369]
 
@@ -2087,6 +2113,7 @@ shape = SubResource("ConcavePolygonShape3D_k7b2a")
 [node name="template-corner" type="MeshInstance3D" parent="template-corner2" unique_id=790885143]
 mesh = SubResource("ArrayMesh_uhpe6")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="template-corner2/template-corner" unique_id=1547501834]
 
@@ -2098,6 +2125,7 @@ shape = SubResource("ConcavePolygonShape3D_oodsy")
 [node name="template-detail" type="MeshInstance3D" parent="template-detail2" unique_id=273905262]
 mesh = SubResource("ArrayMesh_micqs")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="template-detail2/template-detail" unique_id=1609621987]
 
@@ -2109,6 +2137,7 @@ shape = SubResource("ConcavePolygonShape3D_letty")
 [node name="template-floor-big" type="MeshInstance3D" parent="template-floor-big2" unique_id=1611020893]
 mesh = SubResource("ArrayMesh_u41yl")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="template-floor-big2/template-floor-big" unique_id=403137037]
 
@@ -2120,6 +2149,7 @@ shape = SubResource("ConcavePolygonShape3D_0k2bi")
 [node name="template-floor-detail-a" type="MeshInstance3D" parent="template-floor-detail-a2" unique_id=714450719]
 mesh = SubResource("ArrayMesh_j1u2t")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="template-floor-detail-a2/template-floor-detail-a" unique_id=1317823165]
 
@@ -2131,6 +2161,7 @@ shape = SubResource("ConcavePolygonShape3D_kfp5q")
 [node name="template-floor-detail" type="MeshInstance3D" parent="template-floor-detail2" unique_id=1999912865]
 mesh = SubResource("ArrayMesh_pccwq")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="template-floor-detail2/template-floor-detail" unique_id=363070837]
 
@@ -2142,6 +2173,7 @@ shape = SubResource("ConcavePolygonShape3D_lgg2k")
 [node name="template-floor-layer-hole" type="MeshInstance3D" parent="template-floor-layer-hole2" unique_id=1247587860]
 mesh = SubResource("ArrayMesh_u7uga")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="template-floor-layer-hole2/template-floor-layer-hole" unique_id=45318042]
 
@@ -2153,6 +2185,7 @@ shape = SubResource("ConcavePolygonShape3D_rt2g2")
 [node name="template-floor-layer-raised" type="MeshInstance3D" parent="template-floor-layer-raised2" unique_id=2025574543]
 mesh = SubResource("ArrayMesh_e28n7")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="template-floor-layer-raised2/template-floor-layer-raised" unique_id=744001698]
 
@@ -2164,6 +2197,7 @@ shape = SubResource("ConcavePolygonShape3D_kow4a")
 [node name="template-floor-layer" type="MeshInstance3D" parent="template-floor-layer2" unique_id=681160863]
 mesh = SubResource("ArrayMesh_xn04w")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="template-floor-layer2/template-floor-layer" unique_id=2055018081]
 
@@ -2175,6 +2209,7 @@ shape = SubResource("ConcavePolygonShape3D_dxnd6")
 [node name="template-floor" type="MeshInstance3D" parent="template-floor2" unique_id=1751909395]
 mesh = SubResource("ArrayMesh_cvd52")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="template-floor2/template-floor" unique_id=882801536]
 
@@ -2186,6 +2221,7 @@ shape = SubResource("ConcavePolygonShape3D_42vlu")
 [node name="template-wall-corner" type="MeshInstance3D" parent="template-wall-corner2" unique_id=2047422362]
 mesh = SubResource("ArrayMesh_g4c5o")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="template-wall-corner2/template-wall-corner" unique_id=2109747694]
 
@@ -2197,6 +2233,7 @@ shape = SubResource("ConcavePolygonShape3D_1yf1m")
 [node name="template-wall-detail-a" type="MeshInstance3D" parent="template-wall-detail-a2" unique_id=823679736]
 mesh = SubResource("ArrayMesh_y3sd3")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="template-wall-detail-a2/template-wall-detail-a" unique_id=1693529669]
 
@@ -2208,6 +2245,7 @@ shape = SubResource("ConcavePolygonShape3D_3nx67")
 [node name="template-wall-half" type="MeshInstance3D" parent="template-wall-half2" unique_id=1223313091]
 mesh = SubResource("ArrayMesh_pcdnm")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="template-wall-half2/template-wall-half" unique_id=1282158839]
 
@@ -2219,6 +2257,7 @@ shape = SubResource("ConcavePolygonShape3D_jahs7")
 [node name="template-wall-stairs" type="MeshInstance3D" parent="template-wall-stairs2" unique_id=430011974]
 mesh = SubResource("ArrayMesh_igekq")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="template-wall-stairs2/template-wall-stairs" unique_id=508990982]
 
@@ -2230,6 +2269,7 @@ shape = SubResource("ConcavePolygonShape3D_h4jca")
 [node name="template-wall-top" type="MeshInstance3D" parent="template-wall-top2" unique_id=151658066]
 mesh = SubResource("ArrayMesh_c5im3")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="template-wall-top2/template-wall-top" unique_id=1009508763]
 
@@ -2241,6 +2281,7 @@ shape = SubResource("ConcavePolygonShape3D_hao4f")
 [node name="template-wall" type="MeshInstance3D" parent="template-wall2" unique_id=138854206]
 mesh = SubResource("ArrayMesh_ektc6")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_bqoff")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="template-wall2/template-wall" unique_id=1784065539]
 

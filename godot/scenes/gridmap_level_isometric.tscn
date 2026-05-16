@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://do6p3sfncm5b0"]
 
 [ext_resource type="Script" uid="uid://gdgayo30mfbv" path="res://scenes/game_controller.gd" id="1_7yi80"]
-[ext_resource type="MeshLibrary" uid="uid://pv51mba0oubu" path="res://assets/DungeonTiles.tres" id="1_08vtw"]
 [ext_resource type="PackedScene" uid="uid://bb2mwg1fgxmtr" path="res://assets/player_isometric.tscn" id="2_2olhc"]
+[ext_resource type="MeshLibrary" uid="uid://kl6t2rqdmsd4" path="res://assets/DungeonTilesTransparentShader.tres" id="2_7yi80"]
 [ext_resource type="Environment" uid="uid://btunwl7rs4hth" path="res://isometric_environment.tres" id="3_2olhc"]
 [ext_resource type="Script" uid="uid://dr1bbtjy3hnxb" path="res://scripts/enemy_summoner.gd" id="4_8xvc8"]
 [ext_resource type="PackedScene" uid="uid://c5vbgyko843v" path="res://scenes/Settings.tscn" id="5_yj4l7"]
 [ext_resource type="PackedScene" uid="uid://c12xh5vh2dqsb" path="res://assets/collided_objects/gate_door_collision.tscn" id="6_tr1fa"]
 [ext_resource type="Script" uid="uid://o3viv5pckrhl" path="res://scripts/dialogue_manager.gd" id="7_ekmtc"]
+[ext_resource type="PackedScene" uid="uid://cajcxew7235xb" path="res://scenes/custom_check_box.tscn" id="8_virqp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2olhc"]
 size = Vector3(4, 4, 4)
@@ -28,10 +29,10 @@ process_mode = 3
 script = ExtResource("1_7yi80")
 
 [node name="GridMap" type="GridMap" parent="." unique_id=1395449094]
-mesh_library = ExtResource("1_08vtw")
+mesh_library = ExtResource("2_7yi80")
 cell_size = Vector3(4, 4, 4)
 data = {
-"cells": PackedInt32Array(2, 65535, 17, 5, 65535, 10, 6, 65535, 10, 7, 65535, 10, 9, 65535, 15, 9, 65531, 16, 2, 3, 23, 65538, 4, 1048586, 2, 65531, 655383, 65538, 65530, 1048586, 65538, 65529, 1048586)
+"cells": PackedInt32Array(2, 65535, 17, 5, 65535, 10, 6, 65535, 10, 7, 65535, 10, 9, 65535, 15, 9, 65531, 16, 2, 3, 23, 65538, 4, 1048586, 2, 65531, 655383, 65538, 65530, 1048586, 65538, 65529, 1048586, 65535, 65535, 10)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
@@ -205,13 +206,13 @@ text = "E6"
 [node name="gate-door" parent="." unique_id=99461892 instance=ExtResource("6_tr1fa")]
 process_mode = 2
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.456432, 1.3686876, -2.0439444)
-NOTE_HZ = 82.0
+NOTE_HZ = Array[float]([82.0])
 
 [node name="gate-door2" parent="." unique_id=2085253344 instance=ExtResource("6_tr1fa")]
 process_mode = 2
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 31.456432, 1.3686876, -2.0439444)
 DOOR_NUM = 1
-NOTE_HZ = 140.0
+NOTE_HZ = Array[float]([100.0, 200.0])
 
 [node name="DialogueBox" type="Control" parent="." unique_id=1553236118]
 process_mode = 3
@@ -225,6 +226,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("7_ekmtc")
+check_box_prefab = ExtResource("8_virqp")
 
 [node name="Panel" type="Panel" parent="DialogueBox" unique_id=646178162]
 layout_mode = 1
@@ -296,6 +298,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogueBox/Panel" unique_id=2146139714]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -440.0
+offset_top = -50.0
+offset_right = 440.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
 [node name="DialogueTimer" type="Timer" parent="DialogueBox" unique_id=1179373154]
 wait_time = 5.0
 one_shot = true
@@ -304,9 +322,14 @@ one_shot = true
 process_mode = 3
 visible = false
 
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2095096208]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 15, 0)
+
 [connection signal="body_entered" from="EnemySummoner/Area3D" to="EnemySummoner" method="_on_area_3d_body_entered"]
 [connection signal="display_dialogue" from="gate-door" to="DialogueBox" method="_on_gatedoor_display_dialogue"]
+[connection signal="guessed_note" from="gate-door" to="DialogueBox" method="_on_gatedoor_guessed_note"]
 [connection signal="guessed_signal" from="gate-door" to="GameController" method="_on_gatedoor_guessed_signal"]
 [connection signal="display_dialogue" from="gate-door2" to="DialogueBox" method="_on_gatedoor_display_dialogue"]
+[connection signal="guessed_note" from="gate-door2" to="DialogueBox" method="_on_gatedoor_guessed_note"]
 [connection signal="guessed_signal" from="gate-door2" to="GameController" method="_on_gatedoor_guessed_signal"]
 [connection signal="timeout" from="DialogueBox/DialogueTimer" to="DialogueBox" method="_on_dialogue_timer_timeout"]

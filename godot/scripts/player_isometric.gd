@@ -42,12 +42,18 @@ const JUMP_VELOCITY = 4.5
 
 var just_pressed_note = 0.0
 var moves_left = MOVES_TO_SWAP_NOTES
+var ena = true
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	global_position = player_state.player_pos
 	settings.notes_display_mode_changed.connect(change_note_text)
 	change_note_text()
+	#RenderingServer.global_shader_parameter_add("player_pos", RenderingServer.GLOBAL_VAR_TYPE_VEC3, Vector3.ZERO)
+	#RenderingServer.global_shader_parameter_set("player_pos", Vector3(1, 1, 1))
+	#print(RenderingServer.global_shader_parameter_get_list().has("player_pos"))
+	#print(RenderingServer.global_shader_parameter_get_list().has("test_var_test"))
+	print(ProjectSettings.get_setting("shader_globals/player_pos"))
 
 
 func is_note_just_pressed(note: float, expected: float) -> bool:
@@ -91,6 +97,12 @@ func _physics_process(delta: float) -> void:
 		move_dir.x = 0
 		move_dir.y = GRID_SIZE
 		is_moving = try_move(move_dir)
+	
+	if Input.is_action_just_pressed("enable_something"):
+		#ProjectSettings.set_setting("shader_globals/ena", !ProjectSettings.get_setting("shader_globals/ena"))
+		ena = !ena
+		RenderingServer.global_shader_parameter_set("ena", ena)
+		print(RenderingServer.global_shader_parameter_get("ena"))
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	#var input_dir := Input.get_vector("move_left", "move_right", "move_forvard", "move_backwards")
@@ -123,6 +135,9 @@ func _physics_process(delta: float) -> void:
 		#global_position.z += move_dir.y
 	
 	RenderingServer.global_shader_parameter_set("player_pos", global_position)
+	#ProjectSettings.set_setting("shader_globals/player_pos", global_position)
+	#print(ProjectSettings.get_setting("shader_globals/player_pos"))
+	#print(RenderingServer.global_shader_parameter_get("player_pos"))
 	move_and_slide()
 
 

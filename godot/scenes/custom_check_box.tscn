@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cajcxew7235xb"]
+
+[ext_resource type="Texture2D" uid="uid://djdqbfosb7tlv" path="res://assets/textures/black_rectangle.png" id="1_jgvqq"]
+[ext_resource type="Script" uid="uid://dmi5smxkufh6h" path="res://scripts/check_box.gd" id="2_3agn6"]
+[ext_resource type="Texture2D" uid="uid://b7s5oy46ab5ep" path="res://assets/textures/Eo_circle_green_checkmark.svg.png" id="3_5uvy0"]
+
+[node name="CheckBox" type="TextureRect" unique_id=507604580]
+size_flags_horizontal = 3
+texture = ExtResource("1_jgvqq")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("2_3agn6")
+DEFAULT_TEXTURE = ExtResource("1_jgvqq")
+CHECKED_TEXTURE = ExtResource("3_5uvy0")
