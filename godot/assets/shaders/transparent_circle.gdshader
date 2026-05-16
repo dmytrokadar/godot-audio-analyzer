@@ -1,5 +1,4 @@
 shader_type spatial;
-render_mode world_vertex_coords;
 //render_mode blend_mix;
 //
 //void vertex() {

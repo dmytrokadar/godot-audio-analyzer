@@ -46,7 +46,7 @@ var ena = true
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	global_position = player_state.player_pos
+	#global_position = player_state.player_pos
 	settings.notes_display_mode_changed.connect(change_note_text)
 	change_note_text()
 	#RenderingServer.global_shader_parameter_add("player_pos", RenderingServer.GLOBAL_VAR_TYPE_VEC3, Vector3.ZERO)
