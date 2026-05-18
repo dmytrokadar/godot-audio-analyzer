@@ -6,11 +6,11 @@ func _ready() -> void:
 
 
 func play_idle_anim():
-	$AnimationPlayer.play("CharacterArmature|Idle")
+	$AnimationPlayer.play("CharacterArmature|Idle", 0.2)
 
 
 func play_run_anim():
-	$AnimationPlayer.play("CharacterArmature|Run")
+	$AnimationPlayer.play("CharacterArmature|Run", 0.1)
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

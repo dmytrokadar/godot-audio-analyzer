@@ -7,8 +7,10 @@ extends Node3D
 
 @export var DOOR_NUM: int = 0
 @export var NOTE_HZ: Array[float] = [100.0]
+@export var AUDIO_FILE_NAME: String = "res://assets/music/A_open_5_string.mp3"
 
 var door_open_flag = false
+var audio_s: AudioStreamMP3
 
 var playback # Will hold the AudioStreamGeneratorPlayback.
 @onready var sample_hz = audio_stream_player_3d.stream.mix_rate
@@ -27,6 +29,8 @@ signal guessed_signal
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	guessed_signal.connect(game_controller._on_gatedoor_guessed_signal)
+	audio_s = load(AUDIO_FILE_NAME)
+	audio_stream_player_3d.stream = audio_s
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -62,6 +66,10 @@ func fill_audio_buffer():
 
 
 func play_sound():
+	audio_stream_player_3d.play()
+
+
+func play_sound_generated():
 	audio_stream_player_3d.play()
 	playback = audio_stream_player_3d.get_stream_playback()
 	fill_audio_buffer()

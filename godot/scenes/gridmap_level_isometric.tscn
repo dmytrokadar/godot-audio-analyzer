@@ -27,7 +27,11 @@ corner_radius_top_right = 40
 corner_detail = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_tr1fa"]
-font_size = 22
+font_size = 45
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p4f20"]
+font_size = 35
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_krq7c"]
@@ -232,7 +236,7 @@ autowrap_mode = 3
 [node name="gate-door" parent="." unique_id=99461892 instance=ExtResource("6_tr1fa")]
 process_mode = 2
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.456432, 1.3686876, -2.0439444)
-NOTE_HZ = Array[float]([82.0])
+NOTE_HZ = Array[float]([110.0])
 
 [node name="gate-door2" parent="." unique_id=2085253344 instance=ExtResource("6_tr1fa")]
 process_mode = 2
@@ -265,20 +269,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -56.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="DialogueBox/Panel" unique_id=1476271684]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -640.0
-offset_top = -80.0
-offset_right = 640.0
-offset_bottom = 80.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_virqp")
@@ -328,7 +327,7 @@ offset_top = -45.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "[H] Show Hint"
-label_settings = SubResource("LabelSettings_tr1fa")
+label_settings = SubResource("LabelSettings_p4f20")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -344,7 +343,7 @@ offset_top = -50.0
 offset_right = 200.0
 grow_vertical = 0
 text = "[R] Replay Sound"
-label_settings = SubResource("LabelSettings_tr1fa")
+label_settings = SubResource("LabelSettings_p4f20")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -393,11 +392,17 @@ shape = SubResource("BoxShape3D_krq7c")
 process_mode = 3
 visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_left = 108.0
-offset_top = 36.0
-offset_right = 1186.0
-offset_bottom = 684.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -539.0
+offset_top = -324.0
+offset_right = 539.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("11_krq7c")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="EndArea/EndScreen" unique_id=1918214710]

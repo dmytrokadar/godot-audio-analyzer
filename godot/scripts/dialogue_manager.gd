@@ -16,6 +16,11 @@ extends Control
 var text_to_show = []
 var current_door: int = 0
 var door_e: Node3D = null
+var hint_shown = false
+
+var STANDARD_HINT_TEXT = "[H] Show Hint"
+var ADVANCED_HINT_TEXT = "[H] Advanced Hint"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,7 +39,10 @@ func _process(delta: float) -> void:
 			replay_label.visible = false
 		
 		if Input.is_action_just_pressed("help") and hint_label.visible:
-			show_hint()
+			if !hint_shown:
+				show_hint()
+			else:
+				show_advanced_hint()
 		
 		if Input.is_action_just_pressed("replay") and replay_label.visible:
 			door_e.play_sound()
@@ -80,8 +88,15 @@ func next_line_wg():
 	label.text = t
 	dialogue_timer_wg.start()
 
+
 func show_hint():
 	label.text = json_loader.parsed_data["hint"+str(current_door)][0]
+	hint_label.text = ADVANCED_HINT_TEXT
+	hint_shown = true
+
+
+func show_advanced_hint():
+	label.text = json_loader.parsed_data["advanced_hint"+str(current_door)][0]
 
 
 func guessed():
@@ -92,6 +107,8 @@ func guessed():
 	
 	get_tree().paused = false
 	$".".visible = false
+	hint_shown = false
+	hint_label.text = STANDARD_HINT_TEXT
 	hint_label.visible = false
 	replay_label.visible = false
 	door_e = null

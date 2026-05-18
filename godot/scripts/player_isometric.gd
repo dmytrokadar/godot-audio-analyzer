@@ -50,7 +50,7 @@ var rot: int
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	#global_position = player_state.player_pos
+	global_position = player_state.player_pos
 	settings.notes_display_mode_changed.connect(change_note_text)
 	change_note_text()
 	#RenderingServer.global_shader_parameter_add("player_pos", RenderingServer.GLOBAL_VAR_TYPE_VEC3, Vector3.ZERO)
@@ -125,8 +125,6 @@ func _physics_process(delta: float) -> void:
 	if is_moving:
 		print(freq)
 		print(tw)
-		
-		#player_model.rotation = Vector3()
 		
 		tw = create_tween().set_parallel(true)
 		var target_pos = round_to_center(Vector3(global_position.x + move_dir.x, global_position.y, global_position.z + move_dir.y))

@@ -11,6 +11,9 @@
 	"hint0": [
 		"Play open 5th string"
 	],
+	"advanced_hint0": [
+		"Play open 5th string, thats it"
+	],
 	"door1": [
 		"askdmaskjlmdkasmdas",
 		"vnjskjfnjankdsa"
@@ -18,11 +21,17 @@
 	"hint1": [
 		"vcxokxpocvk"
 	],
+	"advanced_hint1": [
+		""
+	],
 	"door2": [
 		"I`m getting bored of these doors",
 		"I hope this will be the last one."
 	],
 	"hint2": [
-		"vcxokxpocvk"dS
+		"vcxokxpocvk"
+	],
+	"advanced_hint2": [
+		""
 	]
 }
