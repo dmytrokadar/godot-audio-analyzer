@@ -11,6 +11,7 @@ extends Control
 @onready var hint_label: Label = $Panel/HintLabel
 @onready var replay_label: Label = $Panel/ReplayLabel
 @onready var h_box_container: HBoxContainer = $Panel/HBoxContainer
+@onready var dialogue_timer_wg: Timer = $DialogueTimerWithoutGuessing
 
 var text_to_show = []
 var current_door: int = 0
@@ -18,7 +19,8 @@ var door_e: Node3D = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	#start_dialogue_without_guessing(0)
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,10 +33,10 @@ func _process(delta: float) -> void:
 			hint_label.visible = false
 			replay_label.visible = false
 		
-		if Input.is_action_just_pressed("help"):
+		if Input.is_action_just_pressed("help") and hint_label.visible:
 			show_hint()
 		
-		if Input.is_action_just_pressed("replay"):
+		if Input.is_action_just_pressed("replay") and replay_label.visible:
 			door_e.play_sound()
 
 
@@ -56,11 +58,27 @@ func start_dialogue(door_num: int, notes_num: int):
 	next_line()
 
 
+func start_dialogue_without_guessing(dialogue_num: int):
+	print(json_loader.parsed_data)
+	text_to_show = json_loader.parsed_data["dialogue"+str(dialogue_num)].duplicate_deep()
+	
+	get_tree().paused = true
+	
+	$".".visible = true
+	
+	next_line_wg()
+
+
 func next_line():
 	var t = text_to_show.pop_front()
 	label.text = t
 	dialogue_timer.start()
 
+
+func next_line_wg():
+	var t = text_to_show.pop_front()
+	label.text = t
+	dialogue_timer_wg.start()
 
 func show_hint():
 	label.text = json_loader.parsed_data["hint"+str(current_door)][0]
@@ -98,3 +116,11 @@ func _on_dialogue_timer_timeout() -> void:
 
 func _on_gatedoor_guessed_note(note_num: int) -> void:
 	h_box_container.get_children()[note_num].change_to_checked()
+
+
+func _on_dialogue_timer_wg_timeout() -> void:
+	if !text_to_show.is_empty():
+		next_line_wg()
+	else:
+		get_tree().paused = false
+		$".".visible = false

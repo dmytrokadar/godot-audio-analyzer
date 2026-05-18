@@ -12,13 +12,14 @@ const JUMP_VELOCITY = 4.5
 @export var LEFT_STRING: float = 146.0
 @export var RIGHT_STRING: float = 196.0
 
-@export var notes_scale = [82.0, 110.0, 146.0, 196.0, 85.0, 95.0, 440.0]
+@export var notes_scale = [87.0, 98.0, 110.0, 117.0, 131.0, 147.0, 165.0, 175.0, 196.0, 220.0, 233.0]
 
 @export_category("Other")
 @export var MOVES_TO_SWAP_NOTES: int = 2
 
 @export var GRID_SIZE = 4
 @export var TRAVEL_TIME = 1
+@export var ROTATION_TIME = 0.1
 
 @export var MOUSE_SENSITIVITY = 0.2
 @export var LERP_SPEED = 10.0
@@ -30,6 +31,7 @@ const JUMP_VELOCITY = 4.5
 @onready var player_state: PlayerState = PlayerState
 @onready var note_timer: Timer = $NoteTimer
 @onready var settings: Control = $"../Settings"
+@onready var player_model: Node3D = $PlayerModel
 
 @onready var forward_panel: Panel = $"../Control/Forward"
 @onready var forward_label: Label = $"../Control/Forward/ForwardLabel"
@@ -43,10 +45,12 @@ const JUMP_VELOCITY = 4.5
 var just_pressed_note = 0.0
 var moves_left = MOVES_TO_SWAP_NOTES
 var ena = true
+var tw: Tween
+var rot: int
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	global_position = player_state.player_pos
+	#global_position = player_state.player_pos
 	settings.notes_display_mode_changed.connect(change_note_text)
 	change_note_text()
 	#RenderingServer.global_shader_parameter_add("player_pos", RenderingServer.GLOBAL_VAR_TYPE_VEC3, Vector3.ZERO)
@@ -54,10 +58,11 @@ func _ready() -> void:
 	#print(RenderingServer.global_shader_parameter_get_list().has("player_pos"))
 	#print(RenderingServer.global_shader_parameter_get_list().has("test_var_test"))
 	print(ProjectSettings.get_setting("shader_globals/player_pos"))
+	tw = create_tween()
 
 
 func is_note_just_pressed(note: float, expected: float) -> bool:
-	if note < expected + 2 and note > expected - 2 and expected != just_pressed_note: 
+	if note < expected + 2 and note > expected - 2 and expected != just_pressed_note and !note_timer.is_running():
 		just_pressed_note = expected
 		note_timer.start(TRAVEL_TIME)
 		return true
@@ -77,26 +82,29 @@ func _physics_process(delta: float) -> void:
 	
 	var is_moving = false
 	
-	#if just_pressed_note != 0.0:
-		#pass
+	#if tw.is_():
 	if Input.is_action_just_pressed("move_forvard") or\
 	 is_note_just_pressed(freq, FORWARD_STRING):
 		move_dir.x = GRID_SIZE
 		is_moving = try_move(move_dir)
+		rot = 90
 	elif Input.is_action_just_pressed("move_backwards") or\
 	 is_note_just_pressed(freq, BACKWARD_STRING):
 		move_dir.x = -GRID_SIZE
 		is_moving = try_move(move_dir)
+		rot = 270
 	elif Input.is_action_just_pressed("move_left") or\
 	 is_note_just_pressed(freq, LEFT_STRING):
 		move_dir.x = 0
 		move_dir.y = -GRID_SIZE
 		is_moving = try_move(move_dir)
+		rot = 180
 	elif Input.is_action_just_pressed("move_right") or\
 	 is_note_just_pressed(freq, RIGHT_STRING):
 		move_dir.x = 0
 		move_dir.y = GRID_SIZE
 		is_moving = try_move(move_dir)
+		rot = 0
 	
 	#if Input.is_action_just_pressed("enable_something"):
 		##ProjectSettings.set_setting("shader_globals/ena", !ProjectSettings.get_setting("shader_globals/ena"))
@@ -116,10 +124,17 @@ func _physics_process(delta: float) -> void:
 	
 	if is_moving:
 		print(freq)
-		var tw = create_tween()
+		print(tw)
+		
+		#player_model.rotation = Vector3()
+		
+		tw = create_tween().set_parallel(true)
 		var target_pos = round_to_center(Vector3(global_position.x + move_dir.x, global_position.y, global_position.z + move_dir.y))
+		var target_rotation = Vector3(0.0, deg_to_rad(rot), 0.0)
 		print(target_pos)
 		
+		player_model.play_run_anim()
+		tw.tween_property(player_model, "rotation", target_rotation, ROTATION_TIME).set_ease(Tween.EASE_OUT)
 		tw.tween_property(self, "global_position", target_pos, TRAVEL_TIME).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		
 		moves_left -= 1

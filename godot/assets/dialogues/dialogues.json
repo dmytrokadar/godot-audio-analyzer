@@ -1,9 +1,15 @@
 {
+	"dialogue0": [
+		"Where am I? Don`t remember anything.",
+		"At least my guitar is with me.",
+		"I should find way out of here"
+	],
 	"door0": [
-		"a"
+		"What a strange door.",
+		"It makes sounds, maybe i should repeat them"
 	],
 	"hint0": [
-		"vcxokxpocvk"
+		"Play open 5th string"
 	],
 	"door1": [
 		"askdmaskjlmdkasmdas",
@@ -11,5 +17,12 @@
 	],
 	"hint1": [
 		"vcxokxpocvk"
+	],
+	"door2": [
+		"I`m getting bored of these doors",
+		"I hope this will be the last one."
+	],
+	"hint2": [
+		"vcxokxpocvk"dS
 	]
 }

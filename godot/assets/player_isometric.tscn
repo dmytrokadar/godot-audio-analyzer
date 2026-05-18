@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bb2mwg1fgxmtr"]
 
 [ext_resource type="Script" uid="uid://ci6k50qjr1naf" path="res://scripts/player_isometric.gd" id="1_gji4n"]
+[ext_resource type="PackedScene" uid="uid://bcb6ultpcfduo" path="res://assets/player_model.tscn" id="2_xr265"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6sh32"]
 radius = 0.45
@@ -9,6 +10,9 @@ radius = 0.45
 
 [node name="Player_isometric" type="CharacterBody3D" unique_id=1645700332]
 script = ExtResource("1_gji4n")
+
+[node name="PlayerModel" parent="." unique_id=1690316503 instance=ExtResource("2_xr265")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
 [node name="Head" type="Camera3D" parent="." unique_id=1960466097]
 transform = Transform3D(0.7071067, 0.40860704, -0.5770964, 0, 0.8161376, 0.5778576, 0.7071067, -0.40860704, 0.5770964, -4, 6, 4)
@@ -24,6 +28,7 @@ shape = SubResource("CapsuleShape3D_6sh32")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=571544785]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1679168278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

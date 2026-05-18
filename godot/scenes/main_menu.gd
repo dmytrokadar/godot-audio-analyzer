@@ -1,6 +1,7 @@
 extends Control
 
 @onready var settings: Control = $Settings
+@onready var tuner: Control = $Tuner
 
 
 func _on_play_button_down() -> void:
@@ -8,7 +9,7 @@ func _on_play_button_down() -> void:
 
 
 func _on_tuner_button_down() -> void:
-	pass # Replace with function body.
+	tuner.visible = true
 
 
 func _on_settings_button_button_down() -> void:

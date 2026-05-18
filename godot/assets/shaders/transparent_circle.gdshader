@@ -21,7 +21,6 @@ uniform float feather = 0.5;
 
 // Godot automatically fills this from our Global Shader Parameter
 global uniform vec3 player_pos;
-global uniform bool ena;
 
 void fragment(){
 	vec4 tex_color = texture(albedo_texture, UV);
