@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="GDExtension Test Project"
-run/main_scene="uid://do6p3sfncm5b0"
+run/main_scene="uid://bjglaoy2a63p1"
 config/features=PackedStringArray("4.6")
 config/icon="res://icon.png"
 
@@ -29,6 +29,7 @@ driver/enable_input=true
 PlayerState="*uid://d2wes205xb477"
 AudioAnalyzer="*res://scenes/gd_audio_analyzer.tscn"
 JsonLoader="*uid://sr7exptrvk6a"
+AudioManager="*uid://ct6mf0nk3x2xx"
 
 [display]
 

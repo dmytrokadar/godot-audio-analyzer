@@ -9,6 +9,7 @@ radius = 0.45
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_gji4n"]
 
 [node name="Player_isometric" type="CharacterBody3D" unique_id=1645700332]
+process_mode = 1
 script = ExtResource("1_gji4n")
 
 [node name="PlayerModel" parent="." unique_id=1690316503 instance=ExtResource("2_xr265")]
@@ -37,12 +38,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1354067756]
+process_mode = 3
 stream = SubResource("AudioStreamMicrophone_gji4n")
+autoplay = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1887497406]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, 1)
 light_energy = 2.0
 light_indirect_energy = 2.188
+shadow_enabled = true
 omni_range = 7.0
 
 [connection signal="timeout" from="NoteTimer" to="." method="_on_note_timer_timeout"]

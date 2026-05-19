@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ct6mf0nk3x2xx"]
+
+[ext_resource type="AudioStream" uid="uid://hgv1dnx61owu" path="res://assets/music/wikiloops_jam_144439.mp3" id="1_hux41"]
+[ext_resource type="Script" uid="uid://cyyx8nsyp2x05" path="res://scripts/audio_manager.gd" id="1_v6v0x"]
+
+[node name="AudioManager" type="Node" unique_id=1191497069]
+script = ExtResource("1_v6v0x")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=90708445]
+stream = ExtResource("1_hux41")

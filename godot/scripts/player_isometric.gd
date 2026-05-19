@@ -15,7 +15,7 @@ const JUMP_VELOCITY = 4.5
 @export var notes_scale = [87.0, 98.0, 110.0, 117.0, 131.0, 147.0, 165.0, 175.0, 196.0, 220.0, 233.0]
 
 @export_category("Other")
-@export var MOVES_TO_SWAP_NOTES: int = 2
+@export var MOVES_TO_SWAP_NOTES: int = 6
 
 @export var GRID_SIZE = 4
 @export var TRAVEL_TIME = 1
@@ -29,6 +29,7 @@ const JUMP_VELOCITY = 4.5
 
 @onready var gd_audio_analyzer: GdAudioAnalyzer = AudioAnalyzer
 @onready var player_state: PlayerState = PlayerState
+@onready var audio_manager: AudioManager = AudioManager
 @onready var note_timer: Timer = $NoteTimer
 @onready var settings: Control = $"../Settings"
 @onready var player_model: Node3D = $PlayerModel
@@ -47,22 +48,26 @@ var moves_left = MOVES_TO_SWAP_NOTES
 var ena = true
 var tw: Tween
 var rot: int
+var micro: AudioStreamMicrophone
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	global_position = player_state.player_pos
 	settings.notes_display_mode_changed.connect(change_note_text)
 	change_note_text()
+	AudioServer.set_input_device_active(player_state.selected_microphone)
+	print(AudioServer.get_input_device_list())
 	#RenderingServer.global_shader_parameter_add("player_pos", RenderingServer.GLOBAL_VAR_TYPE_VEC3, Vector3.ZERO)
 	#RenderingServer.global_shader_parameter_set("player_pos", Vector3(1, 1, 1))
 	#print(RenderingServer.global_shader_parameter_get_list().has("player_pos"))
 	#print(RenderingServer.global_shader_parameter_get_list().has("test_var_test"))
 	print(ProjectSettings.get_setting("shader_globals/player_pos"))
+	audio_manager.background_music.play()
 	tw = create_tween()
 
 
 func is_note_just_pressed(note: float, expected: float) -> bool:
-	if note < expected + 2 and note > expected - 2 and expected != just_pressed_note and !note_timer.is_running():
+	if note < expected + 2 and note > expected - 2 and expected != just_pressed_note and note_timer.is_stopped():
 		just_pressed_note = expected
 		note_timer.start(TRAVEL_TIME)
 		return true

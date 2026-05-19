@@ -66,6 +66,18 @@ offset_bottom = 473.5
 text = "Back
 "
 
+[node name="Exit" type="Button" parent="Panel" unique_id=940350528]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 23.5
+offset_top = -73.5
+offset_right = 135.5
+offset_bottom = -25.5
+grow_vertical = 0
+text = "Exit"
+
 [node name="InputOption" type="OptionButton" parent="Panel" unique_id=362161377]
 layout_mode = 1
 anchors_preset = -1
@@ -124,5 +136,6 @@ label_settings = SubResource("LabelSettings_i47rn")
 autowrap_mode = 3
 
 [connection signal="button_down" from="Panel/Back" to="." method="_on_back_button_down"]
+[connection signal="button_down" from="Panel/Exit" to="." method="_on_exit_button_down"]
 [connection signal="item_selected" from="Panel/InputOption" to="." method="_on_input_option_item_selected"]
 [connection signal="toggled" from="Panel/NotesDisplayModeCheckBox" to="." method="_on_notes_display_mode_check_box_toggled"]

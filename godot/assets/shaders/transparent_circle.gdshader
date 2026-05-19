@@ -19,25 +19,18 @@ uniform sampler2D albedo_texture : source_color;
 uniform float mask_radius = 2.5;
 uniform float feather = 0.5;
 
-// Godot automatically fills this from our Global Shader Parameter
 global uniform vec3 player_pos;
 
 void fragment(){
 	vec4 tex_color = texture(albedo_texture, UV);
 	ALBEDO = tex_color.rgb;
-    // Calculate distance between this pixel and the player
-    //float dist = distance((VIEW_MATRIX * vec4(VERTEX, 1.0) ).xyz, player_pos);
 	
 	vec3 player_view_pos = (VIEW_MATRIX * vec4(player_pos, 1.0)).xyz;
 	float dist = distance(VERTEX.xy, player_view_pos.xy);
 	float mask = smoothstep(mask_radius - feather, mask_radius, dist);
 
-	// THE FIX: Convert the current pixel's position back into World Space
 	float world_y = (INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).y;
 
-	// Only discard pixels if they are:
-	// 1. Between the camera and the player (VERTEX.z > player_view_pos.z)
-	// 2. ABOVE the floor level (world_y > player_pos.y + 0.1)
 	if (VERTEX.z > player_view_pos.z + 1.0 && world_y > player_pos.y + 0.4) {
 		// Bayer Ordered Dithering Matrix
 		const mat4 dither_matrix = mat4(

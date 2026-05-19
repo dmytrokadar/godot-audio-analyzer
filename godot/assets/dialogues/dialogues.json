@@ -4,6 +4,9 @@
 		"At least my guitar is with me.",
 		"I should find way out of here"
 	],
+	"dialogue1": [
+		"There is nothing to see here."
+	],
 	"door0": [
 		"What a strange door.",
 		"It makes sounds, maybe i should repeat them"
@@ -15,23 +18,25 @@
 		"Play open 5th string, thats it"
 	],
 	"door1": [
-		"askdmaskjlmdkasmdas",
-		"vnjskjfnjankdsa"
+		"The door. AGAIN.",
+		"Now it is playing familiar scale. But some notes are missing"
 	],
 	"hint1": [
-		"vcxokxpocvk"
+		"Play 3rd and 6th step of C major scale"
 	],
 	"advanced_hint1": [
-		""
+		"Play 4s/2f and 3s/4f"
 	],
 	"door2": [
-		"I`m getting bored of these doors",
-		"I hope this will be the last one."
+		"I`m getting bored of these doors.",
+		"I hope this will be the last one.",
+		"Some notes sound shorter than other.",
+		"Maybe i should play them."
 	],
 	"hint2": [
-		"vcxokxpocvk"
+		"Play 2nd, 4th and 7th step of F# scale"
 	],
 	"advanced_hint2": [
-		""
+		"Play 6s/3f, 5s/1f and 4s/2f"
 	]
 }

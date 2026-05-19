@@ -13,6 +13,11 @@
 [ext_resource type="Script" uid="uid://db8km83bredeq" path="res://scenes/end_screen.gd" id="11_krq7c"]
 [ext_resource type="Script" uid="uid://ucetxb3y3bvd" path="res://scenes/end_area.gd" id="11_p4f20"]
 [ext_resource type="Texture2D" uid="uid://dc7rab2tjqrfg" path="res://assets/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0001.png" id="11_ri0da"]
+[ext_resource type="PackedScene" uid="uid://dr6m4dam8hog6" path="res://scenes/random_encounter.tscn" id="14_igqvw"]
+[ext_resource type="PackedScene" uid="uid://duj6ubv3edm5x" path="res://assets/barrel_collision.tscn" id="15_bteea"]
+[ext_resource type="PackedScene" uid="uid://bc2n6kl60mi8o" path="res://assets/small_table_collision.tscn" id="16_mg5yv"]
+[ext_resource type="PackedScene" uid="uid://o3bavy8nhcal" path="res://assets/Chalice.glb" id="17_qilmg"]
+[ext_resource type="PackedScene" uid="uid://kqnm5uoqotkb" path="res://assets/Bottle.glb" id="18_o6v5o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2olhc"]
 size = Vector3(4, 4, 4)
@@ -49,13 +54,12 @@ script = ExtResource("1_7yi80")
 mesh_library = ExtResource("2_7yi80")
 cell_size = Vector3(4, 4, 4)
 data = {
-"cells": PackedInt32Array(2, 65535, 17, 5, 65535, 10, 6, 65535, 10, 7, 65535, 10, 9, 65535, 15, 9, 65531, 16, 2, 3, 23, 65538, 4, 1048586, 2, 65531, 655383, 65538, 65530, 1048586, 65538, 65529, 1048586, 65535, 65535, 10, 21, 65535, 655361, 20, 65535, 10, 20, 65534, 655370, 12, 65531, 655362, 12, 65530, 1441793, 13, 65531, 655361, 13, 65530, 655362, 12, 65532, 1441792, 13, 65532, 655363, 12, 65533, 1, 13, 65533, 3, 14, 65533, 655363, 14, 65534, 3, 12, 65534, 1441795, 12, 65535, 1441792, 13, 65535, 655370, 13, 65534, 655370, 14, 65535, 655361, 15, 65535, 1441792, 16, 65535, 0, 17, 65535, 1441792, 18, 65535, 0, 19, 65535, 1441792, 19, 65534, 655363, 21, 65534, 0, 21, 65533, 1048579, 21, 65532, 1048576, 20, 65532, 1, 20, 65533, 10, 19, 65533, 10, 18, 65533, 10, 18, 65534, 655360, 17, 65534, 1048576, 16, 65534, 1441795, 15, 65534, 655363, 15, 65533, 1048579, 16, 65533, 1048577, 17, 65533, 1441792, 17, 65532, 655360, 18, 65532, 655370, 19, 65532, 0, 19, 65531, 1048586, 19, 65530, 1048576, 18, 65531, 655361, 17, 65531, 1441792, 17, 65530, 1048576, 14, 65530, 1048576, 13, 65529, 1048576, 12, 65529, 1441792, 12, 65528, 655360, 13, 65528, 655370, 14, 65528, 655363, 15, 65528, 655361, 14, 65529, 1441792, 15, 65529, 655370, 16, 65529, 0, 16, 65528, 655360, 17, 65528, 0, 17, 65527, 1048579, 16, 65527, 10, 15, 65527, 10, 14, 65527, 10, 13, 65527, 10, 12, 65527, 1441792, 12, 65526, 655360, 16, 65526, 655361, 13, 65526, 655370, 14, 65526, 655370, 15, 65526, 655370, 14, 65531, 1441795, 14, 65532, 0, 15, 65531, 0, 15, 65530, 655360, 16, 65530, 655370, 16, 65531, 1441793, 16, 65532, 1048579, 15, 65532, 655360, 17, 65526, 655360, 18, 65526, 1048576, 18, 65527, 1441792, 19, 65526, 655360, 21, 65526, 1048576, 21, 65529, 1048577, 21, 65528, 1048586, 21, 65527, 1048586, 20, 65526, 10, 18, 65530, 1441792, 17, 65529, 1, 18, 65529, 1048579, 18, 65528, 1441793, 19, 65527, 3, 20, 65527, 1048576, 20, 65528, 0, 19, 65528, 655360, 19, 65529, 1441792, 20, 65529, 1048576, 20, 65530, 1048586, 20, 65531, 1441792, 21, 65531, 0, 21, 65530, 655360, 22, 65530, 655370, 23, 65530, 655370, 26, 65530, 20, 29, 65530, 1)
+"cells": PackedInt32Array(2, 65535, 17, 5, 65535, 10, 6, 65535, 10, 7, 65535, 10, 9, 65535, 15, 9, 65531, 16, 65535, 65535, 10, 21, 65535, 655361, 20, 65535, 10, 20, 65534, 655370, 12, 65531, 655362, 12, 65530, 1441793, 13, 65531, 655361, 13, 65530, 655362, 12, 65532, 1441792, 13, 65532, 655363, 12, 65533, 1, 13, 65533, 3, 14, 65533, 655363, 14, 65534, 3, 12, 65534, 1441795, 12, 65535, 1441792, 13, 65535, 655370, 13, 65534, 655370, 14, 65535, 655361, 15, 65535, 1441792, 16, 65535, 0, 17, 65535, 1441792, 18, 65535, 0, 19, 65535, 1441792, 19, 65534, 655363, 21, 65534, 0, 21, 65533, 1048579, 21, 65532, 1048576, 20, 65532, 1, 20, 65533, 10, 19, 65533, 10, 18, 65533, 10, 18, 65534, 655360, 17, 65534, 1048576, 16, 65534, 1441795, 15, 65534, 655363, 15, 65533, 1048579, 16, 65533, 1048577, 17, 65533, 1441792, 17, 65532, 655360, 18, 65532, 655370, 19, 65532, 0, 19, 65531, 1048586, 19, 65530, 1048576, 18, 65531, 655361, 17, 65531, 1441792, 17, 65530, 1048576, 14, 65530, 1048576, 13, 65529, 1048576, 12, 65529, 1441792, 12, 65528, 655360, 13, 65528, 655370, 14, 65528, 655363, 15, 65528, 655361, 14, 65529, 1441792, 15, 65529, 655370, 16, 65529, 0, 16, 65528, 655360, 17, 65528, 0, 17, 65527, 1048579, 16, 65527, 10, 15, 65527, 10, 14, 65527, 10, 13, 65527, 10, 12, 65527, 1441792, 12, 65526, 655360, 16, 65526, 655361, 13, 65526, 655370, 14, 65526, 655370, 15, 65526, 655370, 14, 65531, 1441795, 14, 65532, 0, 15, 65531, 0, 15, 65530, 655360, 16, 65530, 655370, 16, 65531, 1441793, 16, 65532, 1048579, 15, 65532, 655360, 17, 65526, 655360, 18, 65526, 1048576, 18, 65527, 1441792, 19, 65526, 655360, 21, 65526, 1048576, 21, 65529, 1048577, 21, 65528, 1048586, 21, 65527, 1048586, 20, 65526, 10, 18, 65530, 1441792, 17, 65529, 1, 18, 65529, 1048579, 18, 65528, 1441793, 19, 65527, 3, 20, 65527, 1048576, 20, 65528, 0, 19, 65528, 655360, 19, 65529, 1441792, 20, 65529, 1048576, 20, 65530, 1048586, 20, 65531, 1441792, 21, 65531, 0, 21, 65530, 655360, 22, 65530, 655370, 23, 65530, 655370, 25, 65530, 1048599, 28, 65530, 655380, 31, 65530, 655361, 9, 65528, 1441793, 6, 65531, 1, 65534, 65535, 1, 2, 65532, 1441793, 2, 2, 1048577, 4, 65533, 29, 3, 65533, 30)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Player_isometric" parent="." unique_id=1645700332 groups=["player"] instance=ExtResource("2_2olhc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 2, -20)
-MOVES_TO_SWAP_NOTES = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 2, -22)
 ROTATION_TIME = 0.2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1027775997]
@@ -240,15 +244,17 @@ NOTE_HZ = Array[float]([110.0])
 
 [node name="gate-door2" parent="." unique_id=2085253344 instance=ExtResource("6_tr1fa")]
 process_mode = 2
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 31.456432, 1.3686876, -2.0439444)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.124374, 1.3686876, -7.0439444)
 DOOR_NUM = 1
-NOTE_HZ = Array[float]([100.0, 200.0])
+NOTE_HZ = Array[float]([165.0, 247.0])
+AUDIO_FILE_NAME = "res://assets/music/Cmajor_scale_without_e_and_b.mp3"
 
 [node name="gate-door3" parent="." unique_id=1654195978 instance=ExtResource("6_tr1fa")]
 process_mode = 2
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 91.456436, 1.3686876, -22.043945)
-DOOR_NUM = 1
-NOTE_HZ = Array[float]([100.0, 200.0])
+DOOR_NUM = 2
+NOTE_HZ = Array[float]([98.0, 117.0, 165.0])
+AUDIO_FILE_NAME = "res://assets/music/F#_scale_without_2_4_7.mp3"
 
 [node name="DialogueBox" type="Control" parent="." unique_id=1553236118]
 process_mode = 3
@@ -382,7 +388,7 @@ transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 
 
 [node name="EndArea" type="Area3D" parent="." unique_id=691286331]
 process_mode = 3
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.61313, 2, -18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.61313, 2, -22)
 script = ExtResource("11_p4f20")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EndArea" unique_id=1869613678]
@@ -447,6 +453,51 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 40
 text = "Back to Main Menu"
+
+[node name="RandomEncounter" parent="." unique_id=444835377 instance=ExtResource("14_igqvw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86, 3, -31)
+
+[node name="RandomEncounter2" parent="." unique_id=1637089290 instance=ExtResource("14_igqvw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 3, -38)
+
+[node name="RandomEncounter3" parent="." unique_id=567850267 instance=ExtResource("14_igqvw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 3, -30)
+
+[node name="RandomEncounter4" parent="." unique_id=2041707337 instance=ExtResource("14_igqvw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 3, -2)
+
+[node name="Barrel" parent="." unique_id=480131889 instance=ExtResource("15_bteea")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 10.818855, 2, -14.131033)
+
+[node name="Barrel5" parent="." unique_id=144664484 instance=ExtResource("15_bteea")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 37.28026, 2, -30.131033)
+
+[node name="Barrel6" parent="." unique_id=642730208 instance=ExtResource("15_bteea")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 38.418427, 2, -29.717072)
+
+[node name="Barrel7" parent="." unique_id=2114930190 instance=ExtResource("15_bteea")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 37.88499, 4.087373, -30.137072)
+
+[node name="Barrel2" parent="." unique_id=20827694 instance=ExtResource("15_bteea")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 9.553766, 2, -13.131033)
+
+[node name="Barrel3" parent="." unique_id=97008914 instance=ExtResource("15_bteea")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -6.1306295, 2, -1.967835)
+
+[node name="Barrel4" parent="." unique_id=1554166089 instance=ExtResource("15_bteea")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 2.480927, 2, -9.81267)
+
+[node name="SmallTable" parent="." unique_id=817607483 instance=ExtResource("16_mg5yv")]
+transform = Transform3D(0.70710677, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.70710677, 41.46601, 2.0051441, 1.7029047)
+
+[node name="Root Scene" parent="." unique_id=425371664 instance=ExtResource("17_qilmg")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 40.985935, 2.816079, 1.9399197)
+
+[node name="Root Scene2" parent="." unique_id=1387913742 instance=ExtResource("17_qilmg")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 41.98536, 2.816079, 1.2390583)
+
+[node name="Root Scene3" parent="." unique_id=1549371331 instance=ExtResource("18_o6v5o")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 41.620754, 2.8107367, 1.7023782)
 
 [connection signal="body_entered" from="EnemySummoner/Area3D" to="EnemySummoner" method="_on_area_3d_body_entered"]
 [connection signal="display_dialogue" from="gate-door" to="DialogueBox" method="_on_gatedoor_display_dialogue"]

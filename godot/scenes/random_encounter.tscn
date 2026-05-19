@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dr6m4dam8hog6"]
+
+[ext_resource type="Script" uid="uid://bbfidgbx35eda" path="res://scenes/random_encounter.gd" id="1_cly48"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_krq7c"]
+
+[node name="RandomEncounter" type="Area3D" unique_id=444835377]
+script = ExtResource("1_cly48")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=791251567]
+shape = SubResource("BoxShape3D_krq7c")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
