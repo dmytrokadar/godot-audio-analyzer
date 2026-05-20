@@ -32,6 +32,10 @@ func hz_to_note_string_converter(hz: float) -> String:
 	return notes_array[n % 12] + str(n / 12 - 1)
 
 
+func get_frequency_two() -> float:
+	return get_frequency() * 2
+
+
 func hz_to_tabulation_converter(hz: float) -> String:
 	var n = note_converter(hz)
 	var fret_n = 0

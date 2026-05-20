@@ -26,7 +26,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var freq
-	freq = gd_audio_analyzer.get_frequency()
+	freq = gd_audio_analyzer.get_frequency_two()
 	#print(freq)
 	
 	if not round_ended and freq <= HIGHEST_GUITAR_PITCH:

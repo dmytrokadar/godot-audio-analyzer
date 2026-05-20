@@ -8,3 +8,6 @@ script = ExtResource("1_v6v0x")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=90708445]
 stream = ExtResource("1_hux41")
+volume_db = -2.83
+
+[connection signal="finished" from="BackgroundMusic" to="." method="_on_background_music_finished"]

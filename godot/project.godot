@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [audio]
 
 buses/default_bus_layout="uid://bll4ke70ihlpo"
+driver/output_latency=89
 driver/enable_input=true
 
 [autoload]

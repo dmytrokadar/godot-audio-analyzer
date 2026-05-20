@@ -76,7 +76,7 @@ func is_note_just_pressed(note: float, expected: float) -> bool:
 
 func _physics_process(delta: float) -> void:
 	var freq
-	freq = gd_audio_analyzer.get_frequency()
+	freq = gd_audio_analyzer.get_frequency_two()
 	#print(freq)
 	
 	# Add the gravity.

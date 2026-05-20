@@ -5,9 +5,9 @@ extends Control
 
 
 func _process(delta: float) -> void:
-	var hz = gd_audio_analyzer.get_frequency()
+	var hz = gd_audio_analyzer.get_frequency_two()
 	if hz > 70 and hz < 1000:
-		current_note.text = gd_audio_analyzer.hz_to_note_string_converter(gd_audio_analyzer.get_frequency())
+		current_note.text = gd_audio_analyzer.hz_to_note_string_converter(gd_audio_analyzer.get_frequency_two())
 
 
 func _on_back_button_button_down() -> void:
