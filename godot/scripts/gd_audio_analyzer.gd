@@ -6,6 +6,8 @@ const notes_array = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#",
 const e_tuning = [40, 45, 50, 55, 59, 64]
 const string_names = ["6S", "5S", "4S", "3S", "2S", "1S"]
 
+@export var freq_multiplyer: float = 1.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#pass
@@ -33,7 +35,7 @@ func hz_to_note_string_converter(hz: float) -> String:
 
 
 func get_frequency_two() -> float:
-	return get_frequency() * 2
+	return get_frequency() * freq_multiplyer
 
 
 func hz_to_tabulation_converter(hz: float) -> String:

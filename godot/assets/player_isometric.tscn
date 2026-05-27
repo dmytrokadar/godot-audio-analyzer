@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bb2mwg1fgxmtr"]
 
-[ext_resource type="Script" uid="uid://ci6k50qjr1naf" path="res://scripts/player_isometric.gd" id="1_gji4n"]
+[ext_resource type="Script" uid="uid://5gw7xslis2s8" path="res://scripts/player_isometric.gd" id="1_gji4n"]
 [ext_resource type="PackedScene" uid="uid://bcb6ultpcfduo" path="res://assets/player_model.tscn" id="2_xr265"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6sh32"]

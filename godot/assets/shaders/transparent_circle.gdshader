@@ -1,18 +1,4 @@
 shader_type spatial;
-//render_mode blend_mix;
-//
-//void vertex() {
-	//// Called for every vertex the material is visible on.
-//}
-//
-//void fragment() {
-	//// Called for every pixel the material is visible on.
-//}
-
-//void light() {
-//	// Called for every pixel for every light affecting the material.
-//	// Uncomment to replace the default light processing function with this one.
-//}
 
 // The size of the hole
 uniform sampler2D albedo_texture : source_color;
@@ -48,15 +34,3 @@ void fragment(){
 		}
 	}
 }
-
-//void fragment() {
-    //// If the distance is less than 10 meters, turn the wall red.
-    //// This removes all complex dithering math and focuses only on the variable.
-    //float dist = distance(NODE_POSITION_WORLD + VERTEX, NODE_POSITION_WORLD + player_pos); //vec3(4.0, -6.0, -4.0)
-    //
-    //if (dist < 5.0 && ena) {
-        //ALBEDO = vec3(1.0, 0.0, 0.0);
-    //} else {
-        //ALBEDO = vec3(0.0, 1.0, 0.0); // Green otherwise
-    //}
-//}

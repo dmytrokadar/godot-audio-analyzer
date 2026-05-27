@@ -27,9 +27,9 @@ driver/enable_input=true
 
 [autoload]
 
-PlayerState="*uid://d2wes205xb477"
+PlayerState="*uid://b4e4en5p21wp5"
 AudioAnalyzer="*res://scenes/gd_audio_analyzer.tscn"
-JsonLoader="*uid://sr7exptrvk6a"
+JsonLoader="*uid://c6qxidd3pnjsf"
 AudioManager="*uid://ct6mf0nk3x2xx"
 
 [display]

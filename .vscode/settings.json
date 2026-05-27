@@ -1,5 +1,6 @@
 {
-	"cmake.sourceDirectory": "/Users/dima/bc/godot-audio-analyzer",
+	// "cmake.sourceDirectory": "/Users/dima/bc/godot-audio-analyzer",
+	"cmake.sourceDirectory": "D:/Study/bc/base_gdextension",
 	"files.associations": {
 		"vector": "cpp",
 		"iostream": "cpp",
@@ -64,5 +65,6 @@
 		"xtree": "cpp",
 		"xutility": "cpp"
 	},
-	"godotTools.editorPath.godot4": "/Users/dima/Library/Application Support/Steam/steamapps/common/Godot Engine/Godot.app"
+	// "godotTools.editorPath.godot4": "/Users/dima/Library/Application Support/Steam/steamapps/common/Godot Engine/Godot.app"
+	"godotTools.editorPath.godot4": "d:\\SteamLibrary\\steamapps\\common\\Godot Engine\\godot.windows.opt.tools.64.exe"
 }

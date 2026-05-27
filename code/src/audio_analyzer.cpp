@@ -218,8 +218,6 @@ void AudioAnalyzer::stopAnalyzing()
 
 AudioAnalyzer::~AudioAnalyzer()
 {
-	std::cout << "zalupa" << std::endl;
-
 	if(stream != nullptr){
 		err = Pa_StopStream(stream);
 		checkForErrors(err, "Destructor");

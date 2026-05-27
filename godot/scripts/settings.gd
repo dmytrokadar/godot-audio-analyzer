@@ -4,6 +4,7 @@ extends Control
 @onready var gd_audio_analyzer: GdAudioAnalyzer = AudioAnalyzer
 @onready var player_state: PlayerState = PlayerState
 @onready var notes_display_mode_check_box: CheckBox = $Panel/NotesDisplayModeCheckBox
+@onready var line_edit: LineEdit = $Panel/LineEdit
 
 signal notes_display_mode_changed
 signal unpause_game
@@ -22,6 +23,8 @@ func _ready() -> void:
 	print(ready)
 	notes_display_mode_check_box.button_pressed = !player_state.display_mode_notes
 	print(notes_display_mode_check_box.button_pressed)
+	
+	line_edit.text = str(gd_audio_analyzer.freq_multiplyer)
 	#_on_notes_display_mode_check_box_toggled(player_state.display_mode_notes)
 	
 
@@ -53,3 +56,14 @@ func _on_notes_display_mode_check_box_toggled(toggled_on: bool) -> void:
 
 func _on_exit_button_down() -> void:
 	get_tree().quit()
+
+
+#func _on_line_edit_text_submitted(new_text: String) -> void:
+	#print(line_edit.text)
+
+
+func _on_line_edit_text_changed(new_text: String) -> void:
+	print(line_edit.text)
+	if line_edit.text.is_valid_float():
+		print("valid")
+		gd_audio_analyzer.freq_multiplyer = float(line_edit.text)
